@@ -1,7 +1,9 @@
 <template>
-  <AdaptiveLayout>
-    <slot />
-  </AdaptiveLayout>
+  <div class="h-dvh overflow-hidden">
+    <AdaptiveLayout>
+      <slot />
+    </AdaptiveLayout>
+  </div>
 </template>
 
 <script setup lang="ts">
