@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { AppIcons } from '../../_core/icons/app_icons'
+import { AppIcons } from '@core/icons/app_icons'
 import AppIcon from './app_icon.vue'
 
 const { t, locale, setLocale } = useI18n()

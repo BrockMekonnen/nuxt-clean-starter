@@ -4,12 +4,12 @@ This starter uses a **layered** approach that scales from small apps to large mo
 
 ## Layers
 
-| Layer | Tool | Responsibility |
-|--------|------|----------------|
-| **Domain** | `tsyringe` (`$di`) | Repositories, use cases — stateless, testable |
-| **App state** | **Pinia** | Session, feature UI state, cross-route shared state |
-| **UI API** | Composables (`useAuth`, …) | Stable facade for pages; can wrap stores |
-| **Local UI** | `ref` / `reactive` in components | Form fields, toggles, one-off view state |
+| Layer         | Tool                             | Responsibility                                      |
+| ------------- | -------------------------------- | --------------------------------------------------- |
+| **Domain**    | `tsyringe` (`$di`)               | Repositories, use cases — stateless, testable       |
+| **App state** | **Pinia**                        | Session, feature UI state, cross-route shared state |
+| **UI API**    | Composables (`useAuth`, …)       | Stable facade for pages; can wrap stores            |
+| **Local UI**  | `ref` / `reactive` in components | Form fields, toggles, one-off view state            |
 
 This mirrors the Flutter starter: **Bloc/Cubit** ≈ Pinia stores, **GetIt** ≈ `tsyringe`.
 

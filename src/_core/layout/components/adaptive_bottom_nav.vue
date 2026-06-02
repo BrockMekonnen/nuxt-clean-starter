@@ -37,7 +37,7 @@
 <script setup lang="ts">
 import type { NavDestinationView } from './nav_destination_item.vue'
 import { AppIcons } from '../../icons/app_icons'
-import AppIcon from '../../../_shared/components/app_icon.vue'
+import AppIcon from '@shared/components/app_icon.vue'
 import NavDestinationItem from './nav_destination_item.vue'
 
 const BOTTOM_NAV_MAX = 5

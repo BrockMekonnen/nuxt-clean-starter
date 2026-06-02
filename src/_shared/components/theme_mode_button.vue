@@ -6,12 +6,15 @@
     :aria-label="t('layoutPage.changeTheme')"
     @click="toggleTheme"
   >
-    <AppIcon :name="isDark ? AppIcons.themeLight : AppIcons.themeDark" size="1.25rem" />
+    <AppIcon
+      :name="isDark ? AppIcons.themeLight : AppIcons.themeDark"
+      size="1.25rem"
+    />
   </button>
 </template>
 
 <script setup lang="ts">
-import { AppIcons } from '../../_core/icons/app_icons'
+import { AppIcons } from '@core/icons/app_icons'
 import AppIcon from './app_icon.vue'
 
 const { t } = useI18n()

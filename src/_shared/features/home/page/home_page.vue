@@ -31,9 +31,7 @@ import AppIcon from '@shared/components/app_icon.vue'
 const { t } = useI18n()
 const auth = useAuthStore()
 
-const firstName = computed(
-  () => auth.user?.firstName ?? t('homePage.guest')
-)
+const firstName = computed(() => auth.user?.firstName ?? t('homePage.guest'))
 const fullName = computed(() => {
   const user = auth.user
   if (!user) return '—'

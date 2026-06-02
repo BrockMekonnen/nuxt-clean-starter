@@ -1,10 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 export default {
-  content: [
-    './src/**/*.{vue,js,ts}',
-    './i18n/**/*.{json}'
-  ],
+  content: ['./src/**/*.{vue,js,ts}', './i18n/**/*.{json}'],
   theme: {
     extend: {
       colors: {

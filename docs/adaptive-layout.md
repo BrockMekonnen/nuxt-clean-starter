@@ -4,11 +4,11 @@ Responsive shell aligned with the Flutter starter’s `AdaptiveLayout` / `PageLa
 
 ## Breakpoints (Tailwind)
 
-| Viewport | Navigation |
-|----------|------------|
+| Viewport             | Navigation                                    |
+| -------------------- | --------------------------------------------- |
 | **&lt; md** (mobile) | Bottom bar (+ overflow drawer if &gt;5 items) |
-| **md – lg** (tablet) | Collapsed side rail + overlay drawer |
-| **≥ lg** (desktop) | Permanent side nav (expand/collapse) |
+| **md – lg** (tablet) | Collapsed side rail + overlay drawer          |
+| **≥ lg** (desktop)   | Permanent side nav (expand/collapse)          |
 
 ## Register navigation from a module
 

@@ -1,7 +1,9 @@
 <template>
   <div class="mx-auto max-w-md py-16 text-center">
     <p class="text-5xl font-bold text-primary">401</p>
-    <h1 class="mt-4 text-xl font-semibold">{{ t('errorPage.unauthorizedTitle') }}</h1>
+    <h1 class="mt-4 text-xl font-semibold">
+      {{ t('errorPage.unauthorizedTitle') }}
+    </h1>
     <p class="mt-2 text-muted">{{ t('errorPage.unauthorizedMessage') }}</p>
     <div class="mt-8 flex flex-wrap justify-center gap-3">
       <NuxtLink

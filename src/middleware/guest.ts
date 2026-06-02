@@ -1,5 +1,5 @@
-import { Constants } from '../_core/constants'
-import { firstNavRoute } from '../_core/layout/navigation_registry'
+import { Constants } from '@core/constants'
+import { firstNavRoute } from '@core/layout/navigation_registry'
 
 export default defineNuxtRouteMiddleware((to) => {
   if (!to.meta.guestOnly) return

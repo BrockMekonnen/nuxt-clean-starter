@@ -10,5 +10,11 @@ export interface HttpClient {
     body?: unknown,
     options?: HttpRequestOptions
   ): Promise<T>
+  put<T>(path: string, body?: unknown, options?: HttpRequestOptions): Promise<T>
+  patch<T>(
+    path: string,
+    body?: unknown,
+    options?: HttpRequestOptions
+  ): Promise<T>
+  delete<T>(path: string, options?: HttpRequestOptions): Promise<T>
 }
-

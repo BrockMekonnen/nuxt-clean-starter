@@ -1,7 +1,9 @@
 <template>
   <aside
     class="flex h-full min-h-0 shrink-0 flex-col overflow-hidden border-e border-border/10 bg-surface/40 transition-[width] duration-200 ease-in-out"
-    :style="{ width: collapsed ? `${NAV_RAIL_WIDTH_PX}px` : `${NAV_DRAWER_WIDTH_PX}px` }"
+    :style="{
+      width: collapsed ? `${NAV_RAIL_WIDTH_PX}px` : `${NAV_DRAWER_WIDTH_PX}px`
+    }"
   >
     <SideNavHeader
       v-if="showHeader"

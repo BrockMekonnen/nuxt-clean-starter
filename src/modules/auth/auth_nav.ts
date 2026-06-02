@@ -1,5 +1,5 @@
-import { AppIcons } from '../../_core/icons/app_icons'
-import { registerNavDestinations } from '../../_core/layout/navigation_registry'
+import { AppIcons } from '@core/icons/app_icons'
+import { registerNavDestinations } from '@core/layout/navigation_registry'
 
 export const AUTH_NAV_TAB = {
   profile: 'profile'

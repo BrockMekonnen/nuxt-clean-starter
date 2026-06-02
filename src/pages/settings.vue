@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import SettingsPage from '../_shared/features/settings/page/settings_page.vue'
-import { SHARED_NAV_TAB } from '../_shared/shared_nav'
+import SettingsPage from '@shared/features/settings/page/settings_page.vue'
+import { SHARED_NAV_TAB } from '@shared/shared_nav'
 
 definePageMeta({
   layout: 'app',

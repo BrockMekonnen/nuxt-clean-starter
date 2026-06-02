@@ -79,4 +79,25 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-# nuxt-clean-starter
+
+## Quality checks
+
+```bash
+npm run typecheck   # tsc against the Nuxt-generated config
+npm run lint        # ESLint (flat config via @nuxt/eslint) + import-alias enforcement
+npm run format      # Prettier write (use format:check in CI)
+npm run test        # Vitest (watch via test:watch)
+```
+
+- **Imports** must use the `@core` / `@shared` / `@modules` aliases for cross-layer
+  references; deep relative imports are blocked by ESLint.
+- **Tests** live in `__tests__/` next to the code. Pure domain/data tests run in the
+  `node` environment; tests needing Nuxt auto-imports add a `// @vitest-environment nuxt`
+  docblock and use `mockNuxtImport` (see `modules/auth/__tests__/`).
+
+## Adding a module
+
+1. Create `src/modules/<feature>/{domain,data,stores,features}` (mirror `modules/auth`).
+2. Define tokens in `<feature>_tokens.ts` and a `register<Feature>Module(di)` factory.
+3. Wire it into `src/_core/_init_modules.ts`.
+4. Register nav destinations in `<feature>_nav.ts` and add it to `init_navigation.ts`.

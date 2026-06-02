@@ -4,4 +4,3 @@ export function useHttp(): HttpClient {
   const { $http } = useNuxtApp()
   return $http
 }
-

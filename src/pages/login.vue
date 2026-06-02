@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import AuthLoginPage from '../modules/auth/features/login/page/login_page.vue'
+import AuthLoginPage from '@modules/auth/features/login/page/login_page.vue'
 
 definePageMeta({
   layout: 'default',
@@ -11,4 +11,3 @@ definePageMeta({
   guestOnly: true
 })
 </script>
-

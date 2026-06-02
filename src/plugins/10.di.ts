@@ -1,7 +1,7 @@
 import 'reflect-metadata'
-import { createAppContainer } from '../_core/di/container'
-import { TOKENS } from '../_core/di/tokens'
-import { initBeforeAppRun } from '../_core/_init_modules'
+import { createAppContainer } from '@core/di/container'
+import { TOKENS } from '@core/di/tokens'
+import { initBeforeAppRun } from '@core/_init_modules'
 
 export default defineNuxtPlugin(() => {
   const di = createAppContainer()

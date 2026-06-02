@@ -18,9 +18,9 @@
 
 <script setup lang="ts">
 import { AppIcons } from '../../icons/app_icons'
-import AppIcon from '../../../_shared/components/app_icon.vue'
-import LanguageChangeButton from '../../../_shared/components/language_change_button.vue'
-import ThemeModeButton from '../../../_shared/components/theme_mode_button.vue'
+import AppIcon from '@shared/components/app_icon.vue'
+import LanguageChangeButton from '@shared/components/language_change_button.vue'
+import ThemeModeButton from '@shared/components/theme_mode_button.vue'
 
 const { t } = useI18n()
 const auth = useAuthStore()

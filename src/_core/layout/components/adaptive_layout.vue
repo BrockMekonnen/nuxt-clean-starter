@@ -24,10 +24,7 @@
     </div>
 
     <!-- Mobile: simple shell (no bottom nav) -->
-    <div
-      v-else
-      class="flex h-full flex-col overflow-hidden md:hidden"
-    >
+    <div v-else class="flex h-full flex-col overflow-hidden md:hidden">
       <AdaptiveAppHeader :title="pageTitle" />
       <main class="min-h-0 flex-1 overflow-y-auto overscroll-contain">
         <div class="mx-auto w-full max-w-5xl px-4 py-6">
@@ -109,9 +106,7 @@ const navStore = useNavigationStore()
 
 const { destinationsWithLabels, selectedId } = useNavDestinations()
 
-const hideNavOnMobile = computed(
-  () => route.meta.hideNavOnMobile === true
-)
+const hideNavOnMobile = computed(() => route.meta.hideNavOnMobile === true)
 
 const desktopGridStyle = computed(() => {
   const navWidth = navStore.isDrawerExpanded

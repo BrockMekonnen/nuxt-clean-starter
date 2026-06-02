@@ -7,5 +7,5 @@
 </template>
 
 <script setup lang="ts">
-import AdaptiveLayout from '../_core/layout/components/adaptive_layout.vue'
+import AdaptiveLayout from '@core/layout/components/adaptive_layout.vue'
 </script>

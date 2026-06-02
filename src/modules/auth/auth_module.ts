@@ -2,7 +2,7 @@ import { AuthRepositoryImpl } from './data/auth_repository_impl'
 import { createAuthPersistence } from './data/auth_persistence'
 import { AuthUsecases } from './domain/auth_usecases'
 import type { DependencyContainer } from 'tsyringe'
-import { TOKENS } from '../../_core/di/tokens'
+import { TOKENS } from '@core/di/tokens'
 import { AUTH_TOKENS } from './auth_tokens'
 
 export function registerAuthModule(di: DependencyContainer) {

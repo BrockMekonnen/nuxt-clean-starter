@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import AppIcon from '../../../_shared/components/app_icon.vue'
+import AppIcon from '@shared/components/app_icon.vue'
 
 export type NavDestinationView = {
   id: string
@@ -162,13 +162,16 @@ const showLabel = computed(
 }
 
 .nav-destination--rail.nav-destination--selected .nav-destination__icon-shell,
-.nav-destination--bottom.nav-destination--selected .nav-destination__icon-shell {
+.nav-destination--bottom.nav-destination--selected
+  .nav-destination__icon-shell {
   background-color: rgb(var(--c-primary) / 0.15);
   color: rgb(var(--c-primary));
 }
 
-.nav-destination--rail.nav-destination--selected:hover .nav-destination__icon-shell,
-.nav-destination--bottom.nav-destination--selected:hover .nav-destination__icon-shell {
+.nav-destination--rail.nav-destination--selected:hover
+  .nav-destination__icon-shell,
+.nav-destination--bottom.nav-destination--selected:hover
+  .nav-destination__icon-shell {
   background-color: rgb(var(--c-primary) / 0.22);
   color: rgb(var(--c-primary));
 }
@@ -192,8 +195,10 @@ const showLabel = computed(
   background-color: transparent;
 }
 
-.nav-destination--rail.nav-destination--unselected:hover .nav-destination__icon-shell,
-.nav-destination--bottom.nav-destination--unselected:hover .nav-destination__icon-shell {
+.nav-destination--rail.nav-destination--unselected:hover
+  .nav-destination__icon-shell,
+.nav-destination--bottom.nav-destination--unselected:hover
+  .nav-destination__icon-shell {
   background-color: rgb(var(--c-bg) / 0.45);
 }
 </style>

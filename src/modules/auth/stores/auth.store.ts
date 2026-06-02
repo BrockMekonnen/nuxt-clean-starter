@@ -23,7 +23,8 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function bootstrap() {
-    if (isBootstrapping.value) return
+    // Already hydrated (e.g. from the SSR payload) or in flight — skip.
+    if (session.value || isBootstrapping.value) return
     isBootstrapping.value = true
     try {
       const restored = await resolveUsecases().restoreSession()

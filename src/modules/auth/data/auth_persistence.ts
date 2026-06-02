@@ -1,4 +1,4 @@
-import { Constants } from '../../../_core/constants'
+import { Constants } from '@core/constants'
 import type { AuthSession } from '../domain/auth_session'
 import type { AuthUser } from '../domain/user'
 import { mapUserDto } from './models/user_mapper'
@@ -15,6 +15,9 @@ export interface AuthPersistence {
 }
 
 export function createAuthPersistence(): AuthPersistence {
+  // The token lives only in the cookie so it is the single source of truth on
+  // both server and client. The user object is cached in localStorage purely as
+  // a client-side fast path to avoid a `getMe` round-trip on reload.
   const tokenCookie = useCookie<string | null>(Constants.authTokenCookie, {
     maxAge: 60 * 60 * 24 * 7,
     sameSite: 'lax'
@@ -27,12 +30,6 @@ export function createAuthPersistence(): AuthPersistence {
 
     persistToken(token) {
       tokenCookie.value = token
-      if (!import.meta.client) return
-      if (token) {
-        localStorage.setItem(Constants.authTokenStorageKey, token)
-      } else {
-        localStorage.removeItem(Constants.authTokenStorageKey)
-      }
     },
 
     getCachedUser() {
@@ -73,8 +70,6 @@ export function createAuthPersistence(): AuthPersistence {
       this.persistToken(null)
       if (!import.meta.client) return
       localStorage.removeItem(Constants.authUserStorageKey)
-      localStorage.removeItem(Constants.authTokenStorageKey)
-      localStorage.removeItem('auth.session')
     }
   }
 }

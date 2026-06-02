@@ -1,8 +1,7 @@
-import { Constants } from '../_core/constants'
-import type {
-  HttpClient,
-  HttpRequestOptions
-} from '../_core/http/http_client'
+import { Constants } from '@core/constants'
+import type { HttpClient, HttpRequestOptions } from '@core/http/http_client'
+
+type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
 
 function authHeaders(
   token: string | null | undefined,
@@ -21,7 +20,7 @@ export default defineNuxtPlugin(() => {
 
   async function request<T>(
     path: string,
-    method: 'GET' | 'POST',
+    method: HttpMethod,
     body?: unknown,
     options?: HttpRequestOptions
   ) {
@@ -47,6 +46,15 @@ export default defineNuxtPlugin(() => {
     },
     post<T>(path: string, body?: unknown, options?: HttpRequestOptions) {
       return request<T>(path, 'POST', body, options)
+    },
+    put<T>(path: string, body?: unknown, options?: HttpRequestOptions) {
+      return request<T>(path, 'PUT', body, options)
+    },
+    patch<T>(path: string, body?: unknown, options?: HttpRequestOptions) {
+      return request<T>(path, 'PATCH', body, options)
+    },
+    delete<T>(path: string, options?: HttpRequestOptions) {
+      return request<T>(path, 'DELETE', undefined, options)
     }
   }
 

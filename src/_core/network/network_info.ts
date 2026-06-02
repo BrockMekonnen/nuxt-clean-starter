@@ -7,4 +7,3 @@ export class NetworkInfoWeb implements NetworkInfo {
     return navigator.onLine
   }
 }
-

@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import ProfilePage from '../modules/auth/features/profile/page/profile_page.vue'
-import { AUTH_NAV_TAB } from '../modules/auth/auth_nav'
+import ProfilePage from '@modules/auth/features/profile/page/profile_page.vue'
+import { AUTH_NAV_TAB } from '@modules/auth/auth_nav'
 
 definePageMeta({
   layout: 'app',

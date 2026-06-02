@@ -1,8 +1,7 @@
 /** Mirrors Flutter `Constants` (storage keys, shared app values). */
 export const Constants = {
   authTokenCookie: 'auth_token',
-  authUserStorageKey: 'auth.user',
-  authTokenStorageKey: 'auth.token'
+  authUserStorageKey: 'auth.user'
 } as const
 
 /** API paths relative to `runtimeConfig.public.apiBase` (includes `/api`). */

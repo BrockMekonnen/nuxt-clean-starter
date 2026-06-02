@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import LandingPage from '../_shared/features/landing/page/landing_page.vue'
+import LandingPage from '@shared/features/landing/page/landing_page.vue'
 
 definePageMeta({
   layout: 'landing',

@@ -1,4 +1,4 @@
-import { Constants } from '../_core/constants'
+import { Constants } from '@core/constants'
 
 export default defineNuxtRouteMiddleware((to) => {
   if (!to.meta.requiresAuth) return

@@ -1,5 +1,5 @@
-import { registerAuthNavigation } from '../../modules/auth/auth_nav'
-import { registerSharedNavigation } from '../../_shared/shared_nav'
+import { registerAuthNavigation } from '@modules/auth/auth_nav'
+import { registerSharedNavigation } from '@shared/shared_nav'
 
 let initialized = false
 

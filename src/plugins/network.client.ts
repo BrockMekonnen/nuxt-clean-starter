@@ -1,5 +1,5 @@
-import { NetworkInfoWeb } from '../_core/network/network_info'
-import { TOKENS } from '../_core/di/tokens'
+import { NetworkInfoWeb } from '@core/network/network_info'
+import { TOKENS } from '@core/di/tokens'
 
 export default defineNuxtPlugin(() => {
   const { $di } = useNuxtApp()

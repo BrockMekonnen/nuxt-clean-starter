@@ -46,11 +46,17 @@
             <button
               type="button"
               class="absolute inset-y-0 right-2 flex items-center px-2 text-muted hover:text-text"
-              :aria-label="isPasswordVisible ? 'Hide password' : 'Show password'"
+              :aria-label="
+                isPasswordVisible ? 'Hide password' : 'Show password'
+              "
               @click="isPasswordVisible = !isPasswordVisible"
             >
               <AppIcon
-                :name="isPasswordVisible ? AppIcons.visibilityOff : AppIcons.visibility"
+                :name="
+                  isPasswordVisible
+                    ? AppIcons.visibilityOff
+                    : AppIcons.visibility
+                "
                 size="1.15rem"
               />
             </button>
@@ -80,9 +86,14 @@
         {{ errorMessage }}
       </p>
 
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-1 text-sm text-muted">
+      <div
+        class="mt-10 flex flex-wrap items-center justify-center gap-1 text-sm text-muted"
+      >
         <span>{{ t('loginPage.dontHaveAccount') }}</span>
-        <NuxtLink to="/register" class="font-semibold text-primary hover:underline">
+        <NuxtLink
+          to="/register"
+          class="font-semibold text-primary hover:underline"
+        >
           {{ t('loginPage.signUp') }}
         </NuxtLink>
       </div>

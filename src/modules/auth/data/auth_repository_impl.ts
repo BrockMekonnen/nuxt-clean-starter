@@ -1,6 +1,6 @@
-import { ApiPaths } from '../../../_core/constants'
-import { ApiError, parseFetchError } from '../../../_core/http/api_error'
-import type { HttpClient } from '../../../_core/http/http_client'
+import { ApiPaths } from '@core/constants'
+import { ApiError } from '@core/http/api_error'
+import type { HttpClient } from '@core/http/http_client'
 import type {
   AuthRepository,
   LoginParams,
@@ -9,7 +9,11 @@ import type {
 import type { AuthSession } from '../domain/auth_session'
 import type { AuthUser } from '../domain/user'
 import type { AuthPersistence } from './auth_persistence'
-import type { ApiDataResponse, LoginResponseData, UserDto } from './models/api_types'
+import type {
+  ApiDataResponse,
+  LoginResponseData,
+  UserDto
+} from './models/api_types'
 import { mapUserDto } from './models/user_mapper'
 
 function bearerHeaders(token: string): { headers: Record<string, string> } {
@@ -44,7 +48,7 @@ export class AuthRepositoryImpl implements AuthRepository {
       return session
     } catch (err) {
       this.persistence.clear()
-      throw new ApiError(parseFetchError(err))
+      throw ApiError.from(err)
     }
   }
 
@@ -59,7 +63,7 @@ export class AuthRepositoryImpl implements AuthRepository {
         isTermAndConditionAgreed: params.isTermAndConditionAgreed
       })
     } catch (err) {
-      throw new ApiError(parseFetchError(err))
+      throw ApiError.from(err)
     }
   }
 
@@ -82,7 +86,7 @@ export class AuthRepositoryImpl implements AuthRepository {
       this.persistence.persistUser(user)
       return user
     } catch (err) {
-      throw new ApiError(parseFetchError(err))
+      throw ApiError.from(err)
     }
   }
 

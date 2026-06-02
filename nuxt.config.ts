@@ -13,9 +13,14 @@ export default defineNuxtConfig({
     '~/plugins/theme.ts',
     '~/plugins/10.di.ts',
     '~/plugins/network.client.ts',
-    '~/plugins/auth.client.ts'
+    '~/plugins/auth.ts'
   ],
-  modules: ['@nuxt/icon', '@pinia/nuxt', '@nuxtjs/i18n'],
+  modules: ['@nuxt/eslint', '@nuxt/icon', '@pinia/nuxt', '@nuxtjs/i18n'],
+  eslint: {
+    config: {
+      stylistic: false
+    }
+  },
   icon: {
     serverBundle: {
       collections: ['mdi']
@@ -60,7 +65,13 @@ export default defineNuxtConfig({
     }
   },
   imports: {
-    dirs: ['_core/**', '_shared/**', 'modules/**/features/**/composables']
+    // Auto-import composables only. Domain/data/service code is imported
+    // explicitly (via aliases) to keep layer boundaries visible.
+    dirs: [
+      '_core/**/composables',
+      '_shared/**/composables',
+      'modules/**/features/**/composables'
+    ]
   },
   typescript: {
     tsConfig: {

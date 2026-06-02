@@ -36,7 +36,7 @@ import {
   NAV_HEADER_MENU_INSET_PX,
   NAV_RAIL_WIDTH_PX
 } from '../constants/nav_dimensions'
-import AppIcon from '../../../_shared/components/app_icon.vue'
+import AppIcon from '@shared/components/app_icon.vue'
 
 const props = defineProps<{
   collapsed: boolean

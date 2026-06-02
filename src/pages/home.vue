@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import HomePage from '../_shared/features/home/page/home_page.vue'
-import { SHARED_NAV_TAB } from '../_shared/shared_nav'
+import HomePage from '@shared/features/home/page/home_page.vue'
+import { SHARED_NAV_TAB } from '@shared/shared_nav'
 
 definePageMeta({
   layout: 'app',

@@ -43,7 +43,7 @@
 import type { NavDestinationView } from './nav_destination_item.vue'
 import { AppIcons } from '../../icons/app_icons'
 import { NAV_DRAWER_WIDTH_PX } from '../constants/nav_dimensions'
-import AppIcon from '../../../_shared/components/app_icon.vue'
+import AppIcon from '@shared/components/app_icon.vue'
 import NavDestinationItem from './nav_destination_item.vue'
 
 defineProps<{

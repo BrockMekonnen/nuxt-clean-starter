@@ -9,7 +9,9 @@
 
       <div class="grid gap-4 sm:grid-cols-2">
         <label class="block">
-          <span class="mb-1 block text-sm text-muted">{{ t('registerPage.firstName') }}</span>
+          <span class="mb-1 block text-sm text-muted">{{
+            t('registerPage.firstName')
+          }}</span>
           <input
             v-model="firstName"
             type="text"
@@ -18,7 +20,9 @@
           />
         </label>
         <label class="block">
-          <span class="mb-1 block text-sm text-muted">{{ t('registerPage.lastName') }}</span>
+          <span class="mb-1 block text-sm text-muted">{{
+            t('registerPage.lastName')
+          }}</span>
           <input
             v-model="lastName"
             type="text"
@@ -29,7 +33,9 @@
       </div>
 
       <label class="block">
-        <span class="mb-1 block text-sm text-muted">{{ t('registerPage.phone') }}</span>
+        <span class="mb-1 block text-sm text-muted">{{
+          t('registerPage.phone')
+        }}</span>
         <input
           v-model="phone"
           type="tel"
@@ -39,7 +45,9 @@
       </label>
 
       <label class="block">
-        <span class="mb-1 block text-sm text-muted">{{ t('loginPage.emailAddress') }}</span>
+        <span class="mb-1 block text-sm text-muted">{{
+          t('loginPage.emailAddress')
+        }}</span>
         <input
           v-model="email"
           type="email"
@@ -49,7 +57,9 @@
       </label>
 
       <label class="block">
-        <span class="mb-1 block text-sm text-muted">{{ t('loginPage.password') }}</span>
+        <span class="mb-1 block text-sm text-muted">{{
+          t('loginPage.password')
+        }}</span>
         <input
           v-model="password"
           type="password"
@@ -72,11 +82,16 @@
       </button>
 
       <p v-if="errorMessage" class="text-sm text-red-400">{{ errorMessage }}</p>
-      <p v-if="successMessage" class="text-sm text-primary">{{ successMessage }}</p>
+      <p v-if="successMessage" class="text-sm text-primary">
+        {{ successMessage }}
+      </p>
 
       <p class="text-center text-sm text-muted">
         {{ t('registerPage.hasAccount') }}
-        <NuxtLink to="/login" class="font-semibold text-primary hover:underline">
+        <NuxtLink
+          to="/login"
+          class="font-semibold text-primary hover:underline"
+        >
           {{ t('loginPage.signIn') }}
         </NuxtLink>
       </p>
