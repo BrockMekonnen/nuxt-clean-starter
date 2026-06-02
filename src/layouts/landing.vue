@@ -18,14 +18,14 @@
             class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/15 bg-surface text-text transition hover:border-border/30"
             :title="t('loginPage.signIn')"
           >
-            <span class="text-lg" aria-hidden="true">🔑</span>
+            <AppIcon :name="AppIcons.login" size="1.25rem" />
           </NuxtLink>
           <NuxtLink
             to="/register"
             class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/15 bg-surface text-text transition hover:border-border/30"
             :title="t('registerPage.signUp')"
           >
-            <span class="text-lg" aria-hidden="true">👤</span>
+            <AppIcon :name="AppIcons.register" size="1.25rem" />
           </NuxtLink>
           <ClientOnly>
             <div class="flex items-center gap-2">
@@ -44,6 +44,8 @@
 </template>
 
 <script setup lang="ts">
+import { AppIcons } from '../_core/icons/app_icons'
+import AppIcon from '../_shared/components/app_icon.vue'
 import LanguageChangeButton from '../_shared/components/language_change_button.vue'
 import ThemeModeButton from '../_shared/components/theme_mode_button.vue'
 

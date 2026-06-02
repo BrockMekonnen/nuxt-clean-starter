@@ -22,7 +22,7 @@ export function registerMyFeatureNavigation() {
   registerNavDestinations({
     id: MY_NAV_TAB.list,
     titleKey: 'layoutPage.myList',
-    icon: '📋',
+    icon: 'mdi:clipboard-list-outline',
     route: '/my-list',
     order: 20
   })

@@ -3,37 +3,43 @@
     class="sticky bottom-0 z-10 border-t border-border/10 bg-surface/95 backdrop-blur"
     aria-label="Main"
   >
-    <div class="mx-auto flex max-w-lg justify-around px-2 py-1">
-      <NuxtLink
+    <div class="mx-auto flex max-w-lg justify-around px-1 py-0.5">
+      <div
         v-for="item in visibleDestinations"
         :key="item.id"
-        :to="item.route"
-        class="flex min-w-0 flex-1 flex-col items-center gap-0.5 rounded-lg px-2 py-2 text-xs transition"
-        :class="
-          item.id === selectedId
-            ? 'text-primary font-semibold'
-            : 'text-muted hover:text-text'
-        "
-        :aria-current="item.id === selectedId ? 'page' : undefined"
+        class="min-w-0 flex-1"
       >
-        <span class="text-lg" aria-hidden="true">{{ item.icon }}</span>
-        <span class="truncate">{{ item.title }}</span>
-      </NuxtLink>
+        <NavDestinationItem
+          :destination="item"
+          :selected="item.id === selectedId"
+          variant="bottom"
+          @select="goTo"
+        />
+      </div>
       <button
         v-if="overflowDestinations.length > 0"
         type="button"
-        class="flex min-w-0 flex-1 flex-col items-center gap-0.5 rounded-lg px-2 py-2 text-xs text-muted hover:text-text"
+        class="flex min-w-0 flex-1 flex-col items-center justify-center gap-1 border-0 bg-transparent py-0 text-muted hover:text-text"
+        style="height: 56px"
         :aria-label="t('layoutPage.more')"
         @click="navStore.openMobileDrawer()"
       >
-        <span class="text-lg" aria-hidden="true">⋯</span>
-        <span>{{ t('layoutPage.more') }}</span>
+        <span
+          class="flex h-8 w-14 items-center justify-center rounded-2xl transition-colors hover:bg-bg/45"
+        >
+          <AppIcon :name="AppIcons.more" size="1.25rem" />
+        </span>
       </button>
     </div>
   </nav>
 </template>
 
 <script setup lang="ts">
+import type { NavDestinationView } from './nav_destination_item.vue'
+import { AppIcons } from '../../icons/app_icons'
+import AppIcon from '../../../_shared/components/app_icon.vue'
+import NavDestinationItem from './nav_destination_item.vue'
+
 const BOTTOM_NAV_MAX = 5
 
 const props = defineProps<{
@@ -55,4 +61,8 @@ const visibleDestinations = computed(() =>
 const overflowDestinations = computed(() =>
   props.destinations.slice(BOTTOM_NAV_MAX)
 )
+
+function goTo(destination: NavDestinationView) {
+  return navigateTo(destination.route)
+}
 </script>

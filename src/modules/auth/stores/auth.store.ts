@@ -2,50 +2,43 @@ import { defineStore } from 'pinia'
 import type { AuthSession } from '../domain/auth_session'
 import { AUTH_TOKENS } from '../auth_tokens'
 import type { AuthUsecases } from '../domain/auth_usecases'
-
-const SESSION_STORAGE_KEY = 'auth.session'
+import type { LoginParams, RegisterParams } from '../domain/auth_repository'
 
 export const useAuthStore = defineStore('auth', () => {
   const session = ref<AuthSession | null>(null)
   const isLoading = ref(false)
+  const isBootstrapping = ref(false)
   const errorMessage = ref<string | null>(null)
 
   const isAuthenticated = computed(() => session.value !== null)
-
-  function persistSession(value: AuthSession | null) {
-    if (!import.meta.client) return
-    if (value) {
-      localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(value))
-    } else {
-      localStorage.removeItem(SESSION_STORAGE_KEY)
-    }
-  }
-
-  function hydrateFromStorage() {
-    if (!import.meta.client) return
-    try {
-      const raw = localStorage.getItem(SESSION_STORAGE_KEY)
-      if (raw) {
-        session.value = JSON.parse(raw) as AuthSession
-      }
-    } catch {
-      localStorage.removeItem(SESSION_STORAGE_KEY)
-      session.value = null
-    }
-  }
+  const user = computed(() => session.value?.user ?? null)
 
   function setSession(value: AuthSession | null) {
     session.value = value
-    persistSession(value)
+  }
+
+  function resolveUsecases(): AuthUsecases {
+    const { $di } = useNuxtApp()
+    return $di.resolve<AuthUsecases>(AUTH_TOKENS.AuthUsecases)
+  }
+
+  async function bootstrap() {
+    if (isBootstrapping.value) return
+    isBootstrapping.value = true
+    try {
+      const restored = await resolveUsecases().restoreSession()
+      setSession(restored)
+    } finally {
+      isBootstrapping.value = false
+    }
   }
 
   async function login(email: string, password: string) {
     isLoading.value = true
     errorMessage.value = null
     try {
-      const { $di } = useNuxtApp()
-      const authUsecases = $di.resolve<AuthUsecases>(AUTH_TOKENS.AuthUsecases)
-      setSession(await authUsecases.login({ email, password }))
+      const params: LoginParams = { email, password }
+      setSession(await resolveUsecases().login(params))
     } catch (err) {
       errorMessage.value =
         err instanceof Error ? err.message : 'Unexpected error'
@@ -55,18 +48,36 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
-  function logout() {
+  async function register(params: RegisterParams) {
+    isLoading.value = true
+    errorMessage.value = null
+    try {
+      await resolveUsecases().register(params)
+    } catch (err) {
+      errorMessage.value =
+        err instanceof Error ? err.message : 'Unexpected error'
+      throw err
+    } finally {
+      isLoading.value = false
+    }
+  }
+
+  async function logout() {
+    await resolveUsecases().logout()
     setSession(null)
     errorMessage.value = null
   }
 
   return {
     session,
+    user,
     isLoading,
+    isBootstrapping,
     errorMessage,
     isAuthenticated,
-    hydrateFromStorage,
+    bootstrap,
     login,
+    register,
     logout
   }
 })

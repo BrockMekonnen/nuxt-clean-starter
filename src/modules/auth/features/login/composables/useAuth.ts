@@ -1,20 +1,26 @@
 import { storeToRefs } from 'pinia'
 
-/**
- * UI facade over the auth Pinia store.
- * Pages can use this composable or `useAuthStore()` directly.
- */
 export function useAuth() {
   const store = useAuthStore()
-  const { session, isLoading, errorMessage, isAuthenticated } =
-    storeToRefs(store)
+  const {
+    session,
+    user,
+    isLoading,
+    isBootstrapping,
+    errorMessage,
+    isAuthenticated
+  } = storeToRefs(store)
 
   return {
     session,
+    user,
     isLoading,
+    isBootstrapping,
     errorMessage,
     isAuthenticated,
     login: store.login,
-    logout: store.logout
+    register: store.register,
+    logout: store.logout,
+    bootstrap: store.bootstrap
   }
 }

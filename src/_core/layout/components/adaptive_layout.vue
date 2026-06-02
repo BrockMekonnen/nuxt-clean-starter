@@ -90,7 +90,6 @@ import AdaptiveSideNav from './adaptive_side_nav.vue'
 import { useNavDestinations } from '../composables/use_nav_destinations'
 
 const route = useRoute()
-const router = useRouter()
 const { t } = useI18n()
 const navStore = useNavigationStore()
 
@@ -108,6 +107,6 @@ const pageTitle = computed(() => {
 
 function onNavigate(path: string) {
   navStore.closeMobileDrawer()
-  router.push(path)
+  return navigateTo(path)
 }
 </script>

@@ -1,10 +1,13 @@
+import { Constants } from '../_core/constants'
 import { firstNavRoute } from '../_core/layout/navigation_registry'
 
 export default defineNuxtRouteMiddleware((to) => {
   if (!to.meta.guestOnly) return
 
+  const token = useCookie<string | null>(Constants.authTokenCookie)
   const auth = useAuthStore()
-  if (auth.isAuthenticated) {
+
+  if (token.value || auth.isAuthenticated) {
     return navigateTo(firstNavRoute())
   }
 })

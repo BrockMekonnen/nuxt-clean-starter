@@ -9,7 +9,7 @@ export type AdaptiveDestination = {
   id: NavTabId
   /** i18n key for the label */
   titleKey: string
-  /** Display icon (emoji or short text) */
+  /** Iconify icon name, e.g. `mdi:home` — see [AppIcons] */
   icon: string
   route: string
   order: number

@@ -7,45 +7,45 @@
       @click="$emit('close')"
     />
     <aside
-      class="absolute inset-y-0 start-0 flex w-[min(280px,85vw)] flex-col bg-surface shadow-xl"
+      class="absolute inset-y-0 start-0 flex flex-col bg-surface shadow-xl"
+      :style="{ width: `${NAV_DRAWER_WIDTH_PX}px`, maxWidth: '85vw' }"
       role="dialog"
       aria-modal="true"
       aria-label="Navigation menu"
     >
       <div
-        class="flex h-14 items-center justify-between border-b border-border/10 px-4"
+        class="flex h-14 shrink-0 items-center justify-between border-b border-border/10 px-4"
       >
         <span class="font-semibold">{{ t('app.title') }}</span>
         <button
           type="button"
-          class="rounded-lg px-2 py-1 text-muted hover:text-text"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-muted hover:bg-bg/60 hover:text-text"
           @click="$emit('close')"
         >
-          ✕
+          <AppIcon :name="AppIcons.menuOpen" size="1.25rem" />
         </button>
       </div>
-      <nav class="flex-1 overflow-y-auto py-2">
-        <NuxtLink
+      <nav class="flex-1 overflow-y-auto pt-2.5" aria-label="Main">
+        <NavDestinationItem
           v-for="item in destinations"
           :key="item.id"
-          :to="item.route"
-          class="mx-2 mb-1 flex items-center gap-3 rounded-full px-3 py-2.5 text-sm hover:bg-bg/60"
-          :class="
-            item.id === selectedId
-              ? 'bg-primary/15 font-semibold text-primary'
-              : 'text-text'
-          "
-          @click="$emit('close')"
-        >
-          <span aria-hidden="true">{{ item.icon }}</span>
-          <span>{{ item.title }}</span>
-        </NuxtLink>
+          :destination="item"
+          :selected="item.id === selectedId"
+          variant="drawer"
+          @select="onNavigate"
+        />
       </nav>
     </aside>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { NavDestinationView } from './nav_destination_item.vue'
+import { AppIcons } from '../../icons/app_icons'
+import { NAV_DRAWER_WIDTH_PX } from '../constants/nav_dimensions'
+import AppIcon from '../../../_shared/components/app_icon.vue'
+import NavDestinationItem from './nav_destination_item.vue'
+
 defineProps<{
   destinations: Array<{
     id: string
@@ -56,9 +56,14 @@ defineProps<{
   selectedId: string
 }>()
 
-defineEmits<{
+const emit = defineEmits<{
   close: []
 }>()
 
 const { t } = useI18n()
+
+function onNavigate(destination: NavDestinationView) {
+  emit('close')
+  return navigateTo(destination.route)
+}
 </script>

@@ -1,4 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { fileURLToPath } from 'node:url'
+
+const srcRoot = fileURLToPath(new URL('./src', import.meta.url))
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
@@ -11,18 +15,23 @@ export default defineNuxtConfig({
     '~/plugins/network.client.ts',
     '~/plugins/auth.client.ts'
   ],
-  modules: ['@pinia/nuxt', '@nuxtjs/i18n'],
+  modules: ['@nuxt/icon', '@pinia/nuxt', '@nuxtjs/i18n'],
+  icon: {
+    serverBundle: {
+      collections: ['mdi']
+    }
+  },
   pinia: {
     storesDirs: ['_core/stores/**', 'modules/**/stores/**']
   },
   alias: {
-    '@modules': '/modules',
-    '@shared': '/_shared',
-    '@core': '/_core'
+    '@core': `${srcRoot}/_core`,
+    '@shared': `${srcRoot}/_shared`,
+    '@modules': `${srcRoot}/modules`
   },
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:3001'
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://0.0.0.0:9090/api'
     }
   },
   postcss: {
@@ -55,7 +64,14 @@ export default defineNuxtConfig({
   },
   typescript: {
     tsConfig: {
-      include: ['src/types/**/*.d.ts']
+      include: ['src/types/**/*.d.ts'],
+      compilerOptions: {
+        paths: {
+          '@core/*': ['../src/_core/*'],
+          '@shared/*': ['../src/_shared/*'],
+          '@modules/*': ['../src/modules/*']
+        }
+      }
     }
   }
 })

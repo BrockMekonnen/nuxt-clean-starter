@@ -2,14 +2,14 @@
   <div ref="root" class="relative">
     <button
       type="button"
-      class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/15 bg-surface text-lg text-text transition hover:border-border/30"
+      class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/15 bg-surface text-text transition hover:border-border/30"
       :title="t('layoutPage.changeLanguage')"
       :aria-label="t('layoutPage.changeLanguage')"
       aria-haspopup="menu"
       :aria-expanded="isOpen"
       @click="isOpen = !isOpen"
     >
-      <span aria-hidden="true">🌐</span>
+      <AppIcon :name="AppIcons.language" size="1.25rem" />
     </button>
 
     <div
@@ -34,6 +34,9 @@
 </template>
 
 <script setup lang="ts">
+import { AppIcons } from '../../_core/icons/app_icons'
+import AppIcon from './app_icon.vue'
+
 const { t, locale, setLocale } = useI18n()
 
 const isOpen = ref(false)

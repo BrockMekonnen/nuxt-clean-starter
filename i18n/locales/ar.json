@@ -18,7 +18,14 @@
     "passwordSpecialCharacterErrorMessage": "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل"
   },
   "registerPage": {
-    "signUp": "إنشاء حساب"
+    "signUp": "إنشاء حساب",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "phone": "الهاتف",
+    "agreeTerms": "أوافق على الشروط والأحكام",
+    "signingUp": "جاري التسجيل…",
+    "success": "تم إنشاء الحساب. سجّل الدخول للمتابعة.",
+    "hasAccount": "لديك حساب بالفعل؟"
   },
   "layoutPage": {
     "home": "الرئيسية",

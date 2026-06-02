@@ -18,7 +18,14 @@
     "passwordSpecialCharacterErrorMessage": "La contraseña debe incluir al menos un carácter especial"
   },
   "registerPage": {
-    "signUp": "Registrarse"
+    "signUp": "Registrarse",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "phone": "Teléfono",
+    "agreeTerms": "Acepto los términos y condiciones",
+    "signingUp": "Registrando…",
+    "success": "Cuenta creada. Inicia sesión para continuar.",
+    "hasAccount": "¿Ya tienes cuenta?"
   },
   "layoutPage": {
     "home": "Inicio",

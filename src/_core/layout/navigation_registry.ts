@@ -1,13 +1,16 @@
 import type { AdaptiveDestination } from './types/adaptive_destination'
 
-const registry: AdaptiveDestination[] = []
+/** Keyed by [AdaptiveDestination.id] so repeated bootstrap (SSR + client) cannot duplicate items. */
+const registry = new Map<string, AdaptiveDestination>()
 
 export function registerNavDestinations(...items: AdaptiveDestination[]) {
-  registry.push(...items)
+  for (const item of items) {
+    registry.set(item.id, item)
+  }
 }
 
 export function getNavDestinations(): AdaptiveDestination[] {
-  return [...registry].sort((a, b) => a.order - b.order)
+  return [...registry.values()].sort((a, b) => a.order - b.order)
 }
 
 export function firstNavRoute(): string {
@@ -23,5 +26,5 @@ export function findDestinationByRoute(
 export function findDestinationById(
   id: string
 ): AdaptiveDestination | undefined {
-  return getNavDestinations().find((d) => d.id === id)
+  return registry.get(id)
 }

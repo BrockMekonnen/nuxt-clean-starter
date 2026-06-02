@@ -1,18 +1,26 @@
 <template>
   <aside
-    class="flex shrink-0 flex-col border-e border-border/10 bg-surface/40"
-    :class="collapsed ? 'w-20' : 'w-[280px]'"
+    class="flex shrink-0 flex-col border-e border-border/10 bg-surface/40 transition-[width] duration-200 ease-in-out"
+    :style="{ width: collapsed ? `${NAV_RAIL_WIDTH_PX}px` : `${NAV_DRAWER_WIDTH_PX}px` }"
   >
     <div
-      class="flex h-14 shrink-0 items-center gap-2 border-b border-border/10 px-3"
+      class="flex shrink-0 items-center border-b border-border/10"
+      :class="
+        collapsed
+          ? 'h-14 w-20 justify-center'
+          : 'h-14 gap-2 px-3'
+      "
     >
       <button
         type="button"
-        class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-text hover:bg-bg/60"
+        class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-text hover:bg-bg/60"
         :aria-label="collapsed ? 'Open menu' : 'Toggle menu'"
         @click="onMenuClick"
       >
-        <span class="text-xl" aria-hidden="true">{{ collapsed ? '☰' : '⇔' }}</span>
+        <AppIcon
+          :name="collapsed ? AppIcons.menu : AppIcons.menuOpen"
+          size="1.5rem"
+        />
       </button>
       <NuxtLink
         v-if="!collapsed"
@@ -28,14 +36,13 @@
       </NuxtLink>
     </div>
 
-    <nav class="flex-1 overflow-y-auto py-2" aria-label="Main">
-      <AdaptiveNavItem
+    <nav class="flex-1 overflow-y-auto pt-2.5" aria-label="Main">
+      <NavDestinationItem
         v-for="item in destinations"
         :key="item.id"
         :destination="item"
         :selected="item.id === selectedId"
-        :show-label="!collapsed"
-        :item-class="navItemClass(item.id === selectedId, collapsed)"
+        :variant="collapsed ? 'rail' : 'drawer'"
         @select="onSelect"
       />
     </nav>
@@ -43,7 +50,13 @@
 </template>
 
 <script setup lang="ts">
-import AdaptiveNavItem from './adaptive_nav_item.vue'
+import { AppIcons } from '../../icons/app_icons'
+import {
+  NAV_DRAWER_WIDTH_PX,
+  NAV_RAIL_WIDTH_PX
+} from '../constants/nav_dimensions'
+import AppIcon from '../../../_shared/components/app_icon.vue'
+import NavDestinationItem from './nav_destination_item.vue'
 
 const props = defineProps<{
   destinations: Array<{
@@ -64,19 +77,6 @@ const emit = defineEmits<{
 const { t } = useI18n()
 const navStore = useNavigationStore()
 
-function navItemClass(selected: boolean, collapsed: boolean) {
-  const base =
-    'mx-2 mb-1 flex items-center gap-3 rounded-full px-3 py-2.5 text-sm text-text hover:bg-bg/60'
-  if (collapsed) {
-    return [
-      base,
-      'justify-center px-0',
-      selected ? 'bg-primary/15 text-primary font-semibold' : ''
-    ]
-  }
-  return [base, selected ? 'bg-primary/15 text-primary font-semibold' : '']
-}
-
 function onMenuClick() {
   if (props.menuMode === 'toggle') {
     navStore.toggleDrawer()
@@ -89,5 +89,6 @@ function onMenuClick() {
 
 function onSelect(destination: { route: string }) {
   emit('navigate', destination.route)
+  return navigateTo(destination.route)
 }
 </script>

@@ -1,3 +1,4 @@
+import { AppIcons } from '../_core/icons/app_icons'
 import { registerNavDestinations } from '../_core/layout/navigation_registry'
 
 export const SHARED_NAV_TAB = {
@@ -10,14 +11,14 @@ export function registerSharedNavigation() {
     {
       id: SHARED_NAV_TAB.home,
       titleKey: 'layoutPage.home',
-      icon: '🏠',
+      icon: AppIcons.home,
       route: '/home',
       order: 1
     },
     {
       id: SHARED_NAV_TAB.settings,
       titleKey: 'layoutPage.settings',
-      icon: '⚙️',
+      icon: AppIcons.settings,
       route: '/settings',
       order: 40
     }

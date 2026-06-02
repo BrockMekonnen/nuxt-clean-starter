@@ -18,7 +18,14 @@
     "passwordSpecialCharacterErrorMessage": "密码必须包含至少一个特殊字符"
   },
   "registerPage": {
-    "signUp": "注册"
+    "signUp": "注册",
+    "firstName": "名",
+    "lastName": "姓",
+    "phone": "电话",
+    "agreeTerms": "我同意条款和条件",
+    "signingUp": "注册中…",
+    "success": "账户已创建，请登录继续。",
+    "hasAccount": "已有账户？"
   },
   "layoutPage": {
     "home": "首页",

@@ -77,7 +77,7 @@
 				rel="noopener noreferrer"
 				class="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white hover:brightness-105"
 			>
-				<span aria-hidden="true">&lt;/&gt;</span>
+				<AppIcon :name="AppIcons.github" size="1.1rem" class="me-1" />
 				{{ t("landingPage.viewOnGithub") }}
 			</a>
 		</div>
@@ -94,7 +94,10 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n();
+import { AppIcons } from '@core/icons/app_icons'
+import AppIcon from '@shared/components/app_icon.vue'
 
-const githubUrl = "https://github.com/BrockMekonnen/nuxt-clean-starter";
+const { t } = useI18n()
+
+const githubUrl = 'https://github.com/BrockMekonnen/nuxt-clean-starter'
 </script>

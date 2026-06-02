@@ -49,8 +49,10 @@
               :aria-label="isPasswordVisible ? 'Hide password' : 'Show password'"
               @click="isPasswordVisible = !isPasswordVisible"
             >
-              <span v-if="isPasswordVisible" aria-hidden="true">🙈</span>
-              <span v-else aria-hidden="true">👁</span>
+              <AppIcon
+                :name="isPasswordVisible ? AppIcons.visibilityOff : AppIcons.visibility"
+                size="1.15rem"
+              />
             </button>
           </div>
           <p v-if="fieldErrors.password" class="mt-1 text-xs text-red-400">
@@ -64,11 +66,17 @@
         class="mt-10 flex h-12 w-full items-center justify-center rounded-lg bg-primary text-sm font-semibold text-white transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-70"
         :disabled="isLoading"
       >
-        <span v-if="isLoading" class="inline-block h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+        <span
+          v-if="isLoading"
+          class="inline-block h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white"
+        />
         <span v-else>{{ t('loginPage.signIn') }}</span>
       </button>
 
-      <p v-if="errorMessage" class="mt-4 w-full rounded-lg border border-red-400/30 bg-red-400/10 px-3 py-2 text-sm text-red-300">
+      <p
+        v-if="errorMessage"
+        class="mt-4 w-full rounded-lg border border-red-400/30 bg-red-400/10 px-3 py-2 text-sm text-red-300"
+      >
         {{ errorMessage }}
       </p>
 
@@ -79,30 +87,19 @@
         </NuxtLink>
       </div>
     </form>
-
-    <div
-      v-if="session"
-      class="mt-8 rounded-xl border border-border/10 bg-bg/40 p-4 text-center text-sm"
-    >
-      <p class="text-muted">{{ t('auth.login.signedInAs') }}</p>
-      <p class="mt-1 font-medium">{{ session.user.email }}</p>
-      <button
-        type="button"
-        class="mt-3 rounded-lg border border-border/15 px-3 py-1.5 text-sm hover:border-border/30"
-        @click="logout"
-      >
-        {{ t('auth.login.logout') }}
-      </button>
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n()
-const router = useRouter()
+import { AppIcons } from '@core/icons/app_icons'
+import { firstNavRoute } from '@core/layout/navigation_registry'
+import AppIcon from '@shared/components/app_icon.vue'
 
-const email = ref('demo@acme.com')
-const password = ref('password1!')
+const { t } = useI18n()
+const { isLoading, errorMessage, login } = useAuth()
+
+const email = ref('jane.doe@test.com')
+const password = ref('test@test')
 const isPasswordVisible = ref(false)
 
 const fieldErrors = reactive({
@@ -110,15 +107,13 @@ const fieldErrors = reactive({
   password: ''
 })
 
-const { session, isLoading, errorMessage, login, logout } = useAuth()
-
 function validate(): boolean {
   fieldErrors.email = ''
   fieldErrors.password = ''
 
   const trimmedEmail = email.value.trim()
   if (!trimmedEmail) {
-    fieldErrors.email = t('loginPage.emailAddress') + ' is required'
+    fieldErrors.email = `${t('loginPage.emailAddress')} is required`
     return false
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
@@ -127,15 +122,11 @@ function validate(): boolean {
   }
 
   if (!password.value) {
-    fieldErrors.password = t('loginPage.password') + ' is required'
+    fieldErrors.password = `${t('loginPage.password')} is required`
     return false
   }
   if (password.value.length < 8) {
     fieldErrors.password = t('loginPage.passwordMinLengthErrorMessage')
-    return false
-  }
-  if (!/(?=.*?[#?!@$%^&*-])/.test(password.value)) {
-    fieldErrors.password = t('loginPage.passwordSpecialCharacterErrorMessage')
     return false
   }
 
@@ -147,9 +138,9 @@ async function onSubmit() {
 
   try {
     await login(email.value.trim(), password.value)
-    await router.push('/home')
+    await navigateTo(firstNavRoute(), { replace: true })
   } catch {
-    // errorMessage set in useAuth
+    // errorMessage set in store
   }
 }
 </script>

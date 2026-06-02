@@ -18,7 +18,14 @@
     "passwordSpecialCharacterErrorMessage": "Password must include at least one special character"
   },
   "registerPage": {
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "phone": "Phone",
+    "agreeTerms": "I agree to the terms and conditions",
+    "signingUp": "Signing up…",
+    "success": "Account created. Sign in to continue.",
+    "hasAccount": "Already have an account?"
   },
   "layoutPage": {
     "home": "Home",
