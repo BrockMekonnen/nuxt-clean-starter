@@ -8,7 +8,22 @@
       {{ t('landingPage.paragraph1') }}
     </p>
 
-  <div class="mt-8 grid gap-6 md:grid-cols-2">
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+      <NuxtLink
+        to="/login"
+        class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:brightness-105"
+      >
+        {{ t('loginPage.signIn') }}
+      </NuxtLink>
+      <NuxtLink
+        to="/register"
+        class="inline-flex items-center gap-2 rounded-xl border border-border/15 bg-surface px-5 py-2.5 text-sm font-semibold text-text hover:border-border/25"
+      >
+        {{ t('registerPage.signUp') }}
+      </NuxtLink>
+    </div>
+
+    <div class="mt-8 grid gap-6 md:grid-cols-2">
       <section class="rounded-2xl border border-border/10 bg-surface/20 p-5">
         <h2 class="text-lg font-bold">{{ t('landingPage.featuresTitle') }}</h2>
         <p class="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted">

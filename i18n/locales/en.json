@@ -9,10 +9,20 @@
     "toggleTheme": "Toggle theme"
   },
   "loginPage": {
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "password": "Password",
+    "dontHaveAccount": "Don't have an account?",
+    "signUp": "Sign Up",
+    "emailAddress": "Email Address",
+    "passwordMinLengthErrorMessage": "Password must be at least 8 characters long",
+    "passwordSpecialCharacterErrorMessage": "Password must include at least one special character"
   },
   "registerPage": {
     "signUp": "Sign Up"
+  },
+  "layoutPage": {
+    "changeLanguage": "Change Language",
+    "changeTheme": "Change Theme"
   },
   "landingPage": {
     "welcomeTo": "Welcome to",

@@ -27,24 +27,12 @@
           >
             {{ t('registerPage.signUp') }}
           </NuxtLink>
-          <select
-            v-model="locale"
-            class="rounded-xl border border-border/15 bg-surface px-2 py-1.5 text-text hover:border-border/25"
-            aria-label="Language"
-          >
-            <option value="en">EN</option>
-            <option value="ar">AR</option>
-            <option value="zh">ZH</option>
-            <option value="es">ES</option>
-          </select>
-          <button
-            type="button"
-            class="rounded-xl border border-border/15 bg-surface px-3 py-1.5 text-text hover:border-border/25"
-            :title="t('nav.toggleTheme')"
-            @click="$theme.toggle()"
-          >
-            {{ t('nav.toggleTheme') }}
-          </button>
+          <ClientOnly>
+            <div class="flex items-center gap-2">
+              <LanguageChangeButton />
+              <ThemeModeButton />
+            </div>
+          </ClientOnly>
         </div>
       </nav>
     </header>
@@ -56,5 +44,8 @@
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n()
+import LanguageChangeButton from '../_shared/widgets/language_change_button.vue'
+import ThemeModeButton from '../_shared/widgets/theme_mode_button.vue'
+
+const { t } = useI18n()
 </script>

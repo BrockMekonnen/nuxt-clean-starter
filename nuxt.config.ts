@@ -3,6 +3,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   srcDir: 'src/',
+  // Nuxt scans `src/plugins/`; explicit list guarantees load order (http → di → network).
+  plugins: [
+    '~/plugins/http.ts',
+    '~/plugins/theme.ts',
+    '~/plugins/10.di.ts',
+    '~/plugins/network.client.ts'
+  ],
   modules: ['@nuxtjs/i18n'],
   alias: {
     '@modules': '/modules',

@@ -9,10 +9,20 @@
     "toggleTheme": "تبديل المظهر"
   },
   "loginPage": {
-    "signIn": "تسجيل الدخول"
+    "signIn": "تسجيل الدخول",
+    "password": "كلمة المرور",
+    "dontHaveAccount": "ليس لديك حساب؟",
+    "signUp": "إنشاء حساب",
+    "emailAddress": "البريد الإلكتروني",
+    "passwordMinLengthErrorMessage": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+    "passwordSpecialCharacterErrorMessage": "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل"
   },
   "registerPage": {
     "signUp": "إنشاء حساب"
+  },
+  "layoutPage": {
+    "changeLanguage": "تغيير اللغة",
+    "changeTheme": "تغيير المظهر"
   },
   "landingPage": {
     "welcomeTo": "مرحبًا بك في",

@@ -1,7 +1,7 @@
 import type {
   HttpClient,
   HttpRequestOptions
-} from '../../_core/http/http_client'
+} from '../_core/http/http_client'
 
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig()
@@ -33,4 +33,3 @@ export default defineNuxtPlugin(() => {
     }
   }
 })
-

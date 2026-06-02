@@ -9,10 +9,20 @@
     "toggleTheme": "Cambiar tema"
   },
   "loginPage": {
-    "signIn": "Iniciar sesión"
+    "signIn": "Iniciar sesión",
+    "password": "Contraseña",
+    "dontHaveAccount": "¿No tienes cuenta?",
+    "signUp": "Registrarse",
+    "emailAddress": "Correo electrónico",
+    "passwordMinLengthErrorMessage": "La contraseña debe tener al menos 8 caracteres",
+    "passwordSpecialCharacterErrorMessage": "La contraseña debe incluir al menos un carácter especial"
   },
   "registerPage": {
     "signUp": "Registrarse"
+  },
+  "layoutPage": {
+    "changeLanguage": "Cambiar idioma",
+    "changeTheme": "Cambiar tema"
   },
   "landingPage": {
     "welcomeTo": "Bienvenido a",
