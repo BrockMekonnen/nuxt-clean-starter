@@ -44,8 +44,8 @@
 </template>
 
 <script setup lang="ts">
-import LanguageChangeButton from '../_shared/widgets/language_change_button.vue'
-import ThemeModeButton from '../_shared/widgets/theme_mode_button.vue'
+import LanguageChangeButton from '../_shared/components/language_change_button.vue'
+import ThemeModeButton from '../_shared/components/theme_mode_button.vue'
 
 const { t } = useI18n()
 </script>
