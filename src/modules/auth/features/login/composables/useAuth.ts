@@ -1,38 +1,20 @@
-import type { AuthSession } from '../../../domain/auth_session'
-import { AUTH_TOKENS } from '../../../auth_tokens'
-import type { AuthUsecases } from '../../../domain/auth_usecases'
+import { storeToRefs } from 'pinia'
 
+/**
+ * UI facade over the auth Pinia store.
+ * Pages can use this composable or `useAuthStore()` directly.
+ */
 export function useAuth() {
-  const session = useState<AuthSession | null>('auth.session', () => null)
-  const isLoading = useState<boolean>('auth.loading', () => false)
-  const errorMessage = useState<string | null>('auth.error', () => null)
-
-  async function login(email: string, password: string) {
-    isLoading.value = true
-    errorMessage.value = null
-    try {
-      const { $di } = useNuxtApp()
-      const authUsecases = $di.resolve<AuthUsecases>(AUTH_TOKENS.AuthUsecases)
-      session.value = await authUsecases.login({ email, password })
-    } catch (err) {
-      errorMessage.value =
-        err instanceof Error ? err.message : 'Unexpected error'
-      throw err
-    } finally {
-      isLoading.value = false
-    }
-  }
-
-  function logout() {
-    session.value = null
-  }
+  const store = useAuthStore()
+  const { session, isLoading, errorMessage, isAuthenticated } =
+    storeToRefs(store)
 
   return {
     session,
     isLoading,
     errorMessage,
-    login,
-    logout
+    isAuthenticated,
+    login: store.login,
+    logout: store.logout
   }
 }
-

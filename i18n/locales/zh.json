@@ -21,8 +21,29 @@
     "signUp": "注册"
   },
   "layoutPage": {
+    "home": "首页",
+    "profile": "个人资料",
+    "settings": "设置",
+    "logout": "退出登录",
+    "more": "更多",
     "changeLanguage": "切换语言",
     "changeTheme": "切换主题"
+  },
+  "homePage": {
+    "title": "首页",
+    "hello": "你好",
+    "guest": "访客"
+  },
+  "settingsPage": {
+    "title": "设置",
+    "appearance": "外观"
+  },
+  "profilePage": {
+    "title": "个人资料"
+  },
+  "errorPage": {
+    "unauthorizedTitle": "未授权",
+    "unauthorizedMessage": "请登录后访问此页面。"
   },
   "landingPage": {
     "welcomeTo": "欢迎来到",

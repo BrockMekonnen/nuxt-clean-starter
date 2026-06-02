@@ -6,6 +6,8 @@
 import LandingPage from '../_shared/features/landing/page/landing_page.vue'
 
 definePageMeta({
-  layout: 'landing'
+  layout: 'landing',
+  middleware: 'guest',
+  guestOnly: true
 })
 </script>

@@ -8,9 +8,13 @@ export default defineNuxtConfig({
     '~/plugins/http.ts',
     '~/plugins/theme.ts',
     '~/plugins/10.di.ts',
-    '~/plugins/network.client.ts'
+    '~/plugins/network.client.ts',
+    '~/plugins/auth.client.ts'
   ],
-  modules: ['@nuxtjs/i18n'],
+  modules: ['@pinia/nuxt', '@nuxtjs/i18n'],
+  pinia: {
+    storesDirs: ['_core/stores/**', 'modules/**/stores/**']
+  },
   alias: {
     '@modules': '/modules',
     '@shared': '/_shared',

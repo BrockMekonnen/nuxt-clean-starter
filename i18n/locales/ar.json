@@ -21,8 +21,29 @@
     "signUp": "إنشاء حساب"
   },
   "layoutPage": {
+    "home": "الرئيسية",
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج",
+    "more": "المزيد",
     "changeLanguage": "تغيير اللغة",
     "changeTheme": "تغيير المظهر"
+  },
+  "homePage": {
+    "title": "الرئيسية",
+    "hello": "مرحبًا",
+    "guest": "زائر"
+  },
+  "settingsPage": {
+    "title": "الإعدادات",
+    "appearance": "المظهر"
+  },
+  "profilePage": {
+    "title": "الملف الشخصي"
+  },
+  "errorPage": {
+    "unauthorizedTitle": "غير مصرح",
+    "unauthorizedMessage": "يرجى تسجيل الدخول للوصول إلى هذه الصفحة."
   },
   "landingPage": {
     "welcomeTo": "مرحبًا بك في",

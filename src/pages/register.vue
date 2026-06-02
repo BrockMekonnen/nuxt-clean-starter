@@ -14,5 +14,11 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  layout: 'default',
+  middleware: 'guest',
+  guestOnly: true
+})
+
 const { t } = useI18n()
 </script>

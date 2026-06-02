@@ -1,6 +1,12 @@
-# Nuxt Minimal Starter
+# Nuxt Clean Starter
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Modular clean-architecture starter aligned with [flutter_clean_starter](https://github.com/BrockMekonnen/flutter_clean_starter) and [go-clean-starter](https://github.com/BrockMekonnen/go-clean-starter).
+
+- **Domain / data** — `tsyringe` DI, use cases, repositories
+- **App state** — [Pinia](https://pinia.vuejs.org/) stores per module (see [docs/state-management.md](./docs/state-management.md))
+- **UI** — Nuxt pages, composable facades, Tailwind v4, [adaptive layout](./docs/adaptive-layout.md)
+
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) for framework basics.
 
 ## Setup
 

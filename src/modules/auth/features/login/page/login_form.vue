@@ -147,7 +147,7 @@ async function onSubmit() {
 
   try {
     await login(email.value.trim(), password.value)
-    await router.push('/')
+    await router.push('/home')
   } catch {
     // errorMessage set in useAuth
   }

@@ -21,8 +21,29 @@
     "signUp": "Sign Up"
   },
   "layoutPage": {
+    "home": "Home",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "more": "More",
     "changeLanguage": "Change Language",
     "changeTheme": "Change Theme"
+  },
+  "homePage": {
+    "title": "Home",
+    "hello": "Hello",
+    "guest": "Guest"
+  },
+  "settingsPage": {
+    "title": "Settings",
+    "appearance": "Appearance"
+  },
+  "profilePage": {
+    "title": "Profile"
+  },
+  "errorPage": {
+    "unauthorizedTitle": "Unauthorized",
+    "unauthorizedMessage": "Sign in to access this page."
   },
   "landingPage": {
     "welcomeTo": "Welcome to",
