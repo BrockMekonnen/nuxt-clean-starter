@@ -1,0 +1,45 @@
+{
+  "app": {
+    "title": "قالب Nuxt Clean"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "toggleTheme": "تبديل المظهر"
+  },
+  "loginPage": {
+    "signIn": "تسجيل الدخول"
+  },
+  "registerPage": {
+    "signUp": "إنشاء حساب"
+  },
+  "landingPage": {
+    "welcomeTo": "مرحبًا بك في",
+    "paragraph1": "قالب Nuxt هذا مبني على الهندسة النظيفة والتصميم المعياري. يوفر أساسًا قويًا وقابلًا للتوسع لتطبيقات ويب منظمة وسهلة الصيانة.",
+    "paragraph2": "مثالي للفرق التي تريد قالبًا جاهزًا للإنتاج بحدود وحدات واضحة. سهل التوسيع والاختبار والنشر. استمتع بالبناء! 🚀",
+    "featuresTitle": "📦 الميزات المضمنة",
+    "structureTitle": "📁 هيكل المشروع",
+    "structureDetails": "- src/_core: DI، HTTP، الثيم، الشبكة\n- src/_shared: ميزات مشتركة (الصفحة الرئيسية)\n- src/modules: وحدات الميزات (auth، …)\n- src/pages: غلافات المسارات\n- src/app: غلاف Nuxt\n- i18n/locales: الترجمات",
+    "gettingStartedTitle": "🚀 البدء",
+    "gettingStartedDetails": "1. استنسخ المستودع من GitHub\n2. شغّل `npm install`\n3. ابدأ بـ `npm run dev`\n4. ابنِ الميزات تحت `src/modules/`",
+    "techStackTitle": "🛠️ مجموعة التقنيات",
+    "techStackDetails": "⚡ Nuxt 4 + Vue 3\n🧭 توجيه قائم على الملفات\n🌐 عميل HTTP (ofetch)\n🧩 حقن التبعيات (tsyringe)\n🎨 Tailwind + رموز التصميم\n🌍 i18n (en, ar, zh, es)",
+    "featuresDetails": "✅ نموذج وحدة المصادقة\n✅ معمارية نظيفة معيارية\n✅ وضع فاتح وداكن\n✅ لغات: إنجليزي، عربي، صيني، إسباني\n✅ تصميم متجاوب",
+    "viewOnGithub": "عرض على GitHub",
+    "paragraph3": "نرحب بجميع أنواع المساهمات!\nقم بعمل fork، وأجرِ التعديلات، وافتح pull request.",
+    "contributionsWelcome": "🤝 نرحب بالمساهمات"
+  },
+  "auth": {
+    "login": {
+      "title": "تسجيل الدخول",
+      "subtitle": "تجربة مربوطة بـ POST {apiBase}/auth/login.",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "signIn": "دخول",
+      "signingIn": "جارٍ تسجيل الدخول…",
+      "signedInAs": "تم تسجيل الدخول باسم",
+      "logout": "تسجيل الخروج"
+    }
+  }
+}

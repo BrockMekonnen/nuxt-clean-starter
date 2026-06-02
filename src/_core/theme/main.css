@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+@config '../../../tailwind.config.ts';
+
+html {
+  color-scheme: dark;
+}
+html[data-theme='light'] {
+  color-scheme: light;
+}
+
+body {
+  background: rgb(var(--c-bg));
+  color: rgb(var(--c-text));
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+}

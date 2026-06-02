@@ -1,0 +1,45 @@
+{
+  "app": {
+    "title": "Nuxt Clean Starter"
+  },
+  "nav": {
+    "home": "Home",
+    "login": "Login",
+    "register": "Sign up",
+    "toggleTheme": "Toggle theme"
+  },
+  "loginPage": {
+    "signIn": "Sign In"
+  },
+  "registerPage": {
+    "signUp": "Sign Up"
+  },
+  "landingPage": {
+    "welcomeTo": "Welcome to",
+    "paragraph1": "This Nuxt template is built on Clean Architecture and Modular Design. It gives you a solid, scalable foundation for web apps that are well-structured, easy to maintain, and ready to grow.",
+    "paragraph2": "Ideal for teams who want a production-ready starter with clear module boundaries. Easy to extend, test, and ship. Enjoy building! 🚀",
+    "featuresTitle": "📦 Included Features",
+    "structureTitle": "📁 Project Structure",
+    "structureDetails": "- src/_core: DI, HTTP, theme, network, module init\n- src/_shared: shared features (landing, widgets)\n- src/modules: feature modules (auth, …)\n  • domain / data / features\n- src/pages: thin route wrappers\n- src/app: Nuxt shell (layouts, plugins)\n- i18n/locales: translations (en, ar, zh, es)",
+    "gettingStartedTitle": "🚀 Getting Started",
+    "gettingStartedDetails": "1. Clone the repo from GitHub\n2. Run `npm install`\n3. Start with `npm run dev`\n4. Build features under `src/modules/`",
+    "techStackTitle": "🛠️ Tech Stack",
+    "techStackDetails": "⚡ Nuxt 4 + Vue 3\n🧭 File-based routing (pages/)\n🌐 ofetch HTTP client\n🧩 tsyringe dependency injection\n🎨 Tailwind + design tokens (light/dark)\n🌍 Nuxt I18n (en, ar, zh, es)",
+    "featuresDetails": "✅ Auth module sample (login flow)\n✅ Modular clean architecture\n✅ Light and dark theme\n✅ Localization: English, Arabic, Chinese, Spanish\n✅ Responsive layout",
+    "viewOnGithub": "View on GitHub",
+    "paragraph3": "We welcome contributions of all kinds!\nFork the repo, make changes, and open a pull request.",
+    "contributionsWelcome": "🤝 Contributions Welcome"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "subtitle": "Demo flow wired to POST {apiBase}/auth/login.",
+      "email": "Email",
+      "password": "Password",
+      "signIn": "Sign in",
+      "signingIn": "Signing in…",
+      "signedInAs": "Signed in as",
+      "logout": "Logout"
+    }
+  }
+}

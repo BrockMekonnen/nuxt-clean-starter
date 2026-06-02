@@ -1,0 +1,45 @@
+{
+  "app": {
+    "title": "Nuxt Clean Starter"
+  },
+  "nav": {
+    "home": "Inicio",
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "toggleTheme": "Cambiar tema"
+  },
+  "loginPage": {
+    "signIn": "Iniciar sesión"
+  },
+  "registerPage": {
+    "signUp": "Registrarse"
+  },
+  "landingPage": {
+    "welcomeTo": "Bienvenido a",
+    "paragraph1": "Esta plantilla Nuxt se basa en Arquitectura Limpia y Diseño Modular. Ofrece una base sólida y escalable para aplicaciones web bien estructuradas y fáciles de mantener.",
+    "paragraph2": "Ideal para equipos que quieren un starter listo para producción con límites de módulos claros. Fácil de extender, probar y desplegar. ¡A programar! 🚀",
+    "featuresTitle": "📦 Funciones incluidas",
+    "structureTitle": "📁 Estructura del proyecto",
+    "structureDetails": "- src/_core: DI, HTTP, tema, red\n- src/_shared: funciones compartidas (landing)\n- src/modules: módulos (auth, …)\n- src/pages: wrappers de rutas\n- src/app: shell de Nuxt\n- i18n/locales: traducciones",
+    "gettingStartedTitle": "🚀 Comenzando",
+    "gettingStartedDetails": "1. Clona el repositorio desde GitHub\n2. Ejecuta `npm install`\n3. Inicia con `npm run dev`\n4. Crea features en `src/modules/`",
+    "techStackTitle": "🛠️ Stack tecnológico",
+    "techStackDetails": "⚡ Nuxt 4 + Vue 3\n🧭 Rutas basadas en archivos\n🌐 Cliente HTTP (ofetch)\n🧩 Inyección de dependencias (tsyringe)\n🎨 Tailwind + tokens de diseño\n🌍 i18n (en, ar, zh, es)",
+    "featuresDetails": "✅ Módulo auth de ejemplo\n✅ Arquitectura limpia modular\n✅ Tema claro y oscuro\n✅ Idiomas: inglés, árabe, chino, español\n✅ Diseño responsive",
+    "viewOnGithub": "Ver en GitHub",
+    "paragraph3": "¡Damos la bienvenida a las contribuciones!\nHaz fork, cambia y abre un pull request.",
+    "contributionsWelcome": "🤝 Bienvenidas las contribuciones"
+  },
+  "auth": {
+    "login": {
+      "title": "Iniciar sesión",
+      "subtitle": "Demo conectado a POST {apiBase}/auth/login.",
+      "email": "Correo",
+      "password": "Contraseña",
+      "signIn": "Entrar",
+      "signingIn": "Entrando…",
+      "signedInAs": "Sesión iniciada como",
+      "logout": "Cerrar sesión"
+    }
+  }
+}

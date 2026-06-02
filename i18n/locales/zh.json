@@ -1,0 +1,45 @@
+{
+  "app": {
+    "title": "Nuxt Clean 启动模板"
+  },
+  "nav": {
+    "home": "首页",
+    "login": "登录",
+    "register": "注册",
+    "toggleTheme": "切换主题"
+  },
+  "loginPage": {
+    "signIn": "登录"
+  },
+  "registerPage": {
+    "signUp": "注册"
+  },
+  "landingPage": {
+    "welcomeTo": "欢迎来到",
+    "paragraph1": "本 Nuxt 模板基于整洁架构与模块化设计，为结构清晰、易于维护、可扩展的 Web 应用提供坚实基础。",
+    "paragraph2": "适合希望以清晰模块边界快速启动项目的团队。易于扩展、测试和上线。祝你构建愉快！🚀",
+    "featuresTitle": "📦 包含的功能",
+    "structureTitle": "📁 项目结构",
+    "structureDetails": "- src/_core：DI、HTTP、主题、网络\n- src/_shared：共享功能（落地页等）\n- src/modules：功能模块（auth 等）\n- src/pages：路由薄封装\n- src/app：Nuxt 应用壳\n- i18n/locales：多语言文件",
+    "gettingStartedTitle": "🚀 入门",
+    "gettingStartedDetails": "1. 从 GitHub 克隆仓库\n2. 运行 `npm install`\n3. 使用 `npm run dev` 启动\n4. 在 `src/modules/` 下开发功能",
+    "techStackTitle": "🛠️ 技术栈",
+    "techStackDetails": "⚡ Nuxt 4 + Vue 3\n🧭 基于文件的路由\n🌐 ofetch HTTP 客户端\n🧩 tsyringe 依赖注入\n🎨 Tailwind + 设计令牌\n🌍 i18n（en、ar、zh、es）",
+    "featuresDetails": "✅ Auth 模块示例（登录流程）\n✅ 模块化整洁架构\n✅ 浅色/深色主题\n✅ 多语言：英/阿/中/西\n✅ 响应式布局",
+    "viewOnGithub": "在 GitHub 上查看",
+    "paragraph3": "欢迎各种形式的贡献！\nFork 仓库，修改后提交 Pull Request。",
+    "contributionsWelcome": "🤝 欢迎贡献"
+  },
+  "auth": {
+    "login": {
+      "title": "登录",
+      "subtitle": "示例请求：POST {apiBase}/auth/login。",
+      "email": "邮箱",
+      "password": "密码",
+      "signIn": "登录",
+      "signingIn": "正在登录…",
+      "signedInAs": "已登录为",
+      "logout": "退出登录"
+    }
+  }
+}

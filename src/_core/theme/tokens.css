@@ -1,0 +1,23 @@
+/* Design tokens (Flutter-like: _core/theme.dart) */
+:root {
+  --c-bg: 11 16 32;
+  --c-surface: 18 24 46;
+  --c-text: 232 236 255;
+  --c-muted: 170 178 210;
+  --c-border: 255 255 255;
+  --c-primary: 79 70 229;
+
+  --r-xl: 14px;
+  --r-2xl: 18px;
+}
+
+/* Light theme */
+html[data-theme='light'] {
+  --c-bg: 248 250 252;
+  --c-surface: 255 255 255;
+  --c-text: 15 23 42;
+  --c-muted: 71 85 105;
+  --c-border: 15 23 42;
+  --c-primary: 79 70 229;
+}
+
