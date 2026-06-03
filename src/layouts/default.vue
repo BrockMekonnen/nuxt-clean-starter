@@ -6,17 +6,9 @@
       <nav
         class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3"
       >
-        <NuxtLink
-          to="/"
-          class="flex items-center gap-2 font-bold tracking-tight"
-        >
-          <span
-            class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/20 text-primary"
-            aria-hidden="true"
-          >
-            N
-          </span>
-          <span class="hidden sm:inline">{{ t('app.title') }}</span>
+        <NuxtLink to="/" class="flex items-center gap-2">
+          <AppLogo size="2.25rem" />
+          <AppName custom-class="hidden sm:inline" />
         </NuxtLink>
 
         <div
@@ -53,6 +45,8 @@
 </template>
 
 <script setup lang="ts">
+import AppLogo from '@shared/components/app_logo.vue'
+import AppName from '@shared/components/app_name.vue'
 import LanguageChangeButton from '@shared/components/language_change_button.vue'
 import ThemeModeButton from '@shared/components/theme_mode_button.vue'
 

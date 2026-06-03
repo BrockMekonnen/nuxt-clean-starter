@@ -3,12 +3,7 @@
     class="w-full max-w-[500px] rounded-xl border border-border/15 bg-surface/30 px-10 py-12 shadow-sm md:bg-surface/50"
   >
     <form class="flex flex-col items-center" @submit.prevent="onSubmit">
-      <div
-        class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20 text-xl font-bold text-primary"
-        aria-hidden="true"
-      >
-        N
-      </div>
+      <AppLogo size="3rem" />
 
       <h1 class="mt-3 text-center text-2xl font-medium">
         {{ t('loginPage.signIn') }}
@@ -110,6 +105,7 @@ import { firstNavRoute } from '@core/layout/navigation_registry'
 import { safeRedirectPath } from '@core/routing/safe_redirect'
 import { failureMessage } from '@core/error/failures'
 import AppIcon from '@shared/components/app_icon.vue'
+import AppLogo from '@shared/components/app_logo.vue'
 
 const { t } = useI18n()
 const route = useRoute()

@@ -16,7 +16,14 @@
       <div
         class="flex h-14 shrink-0 items-center justify-between border-b border-border/10 px-4"
       >
-        <span class="font-semibold">{{ t('app.title') }}</span>
+        <NuxtLink
+          to="/home"
+          class="flex min-w-0 items-center gap-2"
+          @click="$emit('close')"
+        >
+          <AppLogo size="2rem" />
+          <AppName custom-class="text-sm font-semibold" />
+        </NuxtLink>
         <button
           type="button"
           class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-muted hover:bg-bg/60 hover:text-text"
@@ -44,6 +51,8 @@ import type { NavDestinationView } from './nav_destination_item.vue'
 import { AppIcons } from '../../icons/app_icons'
 import { NAV_DRAWER_WIDTH_PX } from '../constants/nav_dimensions'
 import AppIcon from '@shared/components/app_icon.vue'
+import AppLogo from '@shared/components/app_logo.vue'
+import AppName from '@shared/components/app_name.vue'
 import NavDestinationItem from './nav_destination_item.vue'
 
 defineProps<{
@@ -59,8 +68,6 @@ defineProps<{
 const emit = defineEmits<{
   close: []
 }>()
-
-const { t } = useI18n()
 
 function onNavigate(destination: NavDestinationView) {
   emit('close')
