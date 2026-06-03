@@ -1,3 +1,4 @@
+import { ValidationFailure } from '@core/error/failures'
 import type {
   AuthRepository,
   LoginParams,
@@ -10,8 +11,8 @@ export class AuthUsecases {
   constructor(private readonly repo: AuthRepository) {}
 
   async login(params: LoginParams): Promise<AuthSession> {
-    if (!params.email.trim()) throw new Error('Email is required')
-    if (!params.password) throw new Error('Password is required')
+    if (!params.email.trim()) throw new ValidationFailure('Email is required')
+    if (!params.password) throw new ValidationFailure('Password is required')
     return await this.repo.login({
       email: params.email.trim(),
       password: params.password
@@ -19,12 +20,16 @@ export class AuthUsecases {
   }
 
   async register(params: RegisterParams): Promise<void> {
-    if (!params.firstName.trim()) throw new Error('First name is required')
-    if (!params.lastName.trim()) throw new Error('Last name is required')
-    if (!params.email.trim()) throw new Error('Email is required')
-    if (!params.password) throw new Error('Password is required')
+    if (!params.firstName.trim()) {
+      throw new ValidationFailure('First name is required')
+    }
+    if (!params.lastName.trim()) {
+      throw new ValidationFailure('Last name is required')
+    }
+    if (!params.email.trim()) throw new ValidationFailure('Email is required')
+    if (!params.password) throw new ValidationFailure('Password is required')
     if (!params.isTermAndConditionAgreed) {
-      throw new Error('You must accept the terms and conditions')
+      throw new ValidationFailure('You must accept the terms and conditions')
     }
     return await this.repo.register(params)
   }

@@ -14,6 +14,11 @@
     "dontHaveAccount": "ليس لديك حساب؟",
     "signUp": "إنشاء حساب",
     "emailAddress": "البريد الإلكتروني",
+    "emailRequired": "البريد الإلكتروني مطلوب",
+    "invalidEmail": "بريد إلكتروني غير صالح",
+    "passwordRequired": "كلمة المرور مطلوبة",
+    "showPassword": "إظهار كلمة المرور",
+    "hidePassword": "إخفاء كلمة المرور",
     "passwordMinLengthErrorMessage": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
     "passwordSpecialCharacterErrorMessage": "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل"
   },
@@ -49,6 +54,10 @@
     "title": "الملف الشخصي"
   },
   "errorPage": {
+    "title": "حدث خطأ ما",
+    "message": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+    "notFoundTitle": "الصفحة غير موجودة",
+    "goHome": "العودة للرئيسية",
     "unauthorizedTitle": "غير مصرح",
     "unauthorizedMessage": "يرجى تسجيل الدخول للوصول إلى هذه الصفحة."
   },

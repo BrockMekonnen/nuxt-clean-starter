@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { failureMessage } from '@core/error/failures'
 import type { AuthSession } from '../domain/auth_session'
 import { AUTH_TOKENS } from '../auth_tokens'
 import type { AuthUsecases } from '../domain/auth_usecases'
@@ -41,8 +42,7 @@ export const useAuthStore = defineStore('auth', () => {
       const params: LoginParams = { email, password }
       setSession(await resolveUsecases().login(params))
     } catch (err) {
-      errorMessage.value =
-        err instanceof Error ? err.message : 'Unexpected error'
+      errorMessage.value = failureMessage(err)
       throw err
     } finally {
       isLoading.value = false
@@ -55,8 +55,7 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       await resolveUsecases().register(params)
     } catch (err) {
-      errorMessage.value =
-        err instanceof Error ? err.message : 'Unexpected error'
+      errorMessage.value = failureMessage(err)
       throw err
     } finally {
       isLoading.value = false

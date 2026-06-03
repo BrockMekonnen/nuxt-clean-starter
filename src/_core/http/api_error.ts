@@ -1,16 +1,48 @@
-export class ApiError extends Error {
-  readonly statusCode?: number
+import { ServerFailure } from '@core/error/failures'
 
-  constructor(message: string, statusCode?: number) {
-    super(message)
-    this.name = 'ApiError'
-    this.statusCode = statusCode
-  }
-
+/**
+ * HTTP-layer failure. Extends `ServerFailure` so callers can treat it as a
+ * generic `Failure`, while still exposing the status code for branching.
+ */
+export class ApiError extends ServerFailure {
   /** Normalize any thrown value (including `$fetch` `FetchError`) into an `ApiError`. */
   static from(err: unknown): ApiError {
     if (err instanceof ApiError) return err
-    return new ApiError(parseFetchError(err), parseFetchStatus(err))
+    const statusCode = parseFetchStatus(err)
+    return new ApiError(resolveMessage(err, statusCode), statusCode)
+  }
+}
+
+/** Prefer the server-provided message; fall back to a status-based generic one. */
+function resolveMessage(err: unknown, statusCode?: number): string {
+  const serverMessage = parseFetchError(err)
+  if (serverMessage !== 'Unexpected error') return serverMessage
+  return messageForStatus(statusCode) ?? serverMessage
+}
+
+/** Generic message per status code (mirrors the Flutter `_handleError` map). */
+export function messageForStatus(statusCode?: number): string | undefined {
+  switch (statusCode) {
+    case 400:
+      return 'Bad request'
+    case 401:
+      return 'Unauthorized'
+    case 403:
+      return 'Forbidden'
+    case 404:
+      return 'Not found'
+    case 409:
+      return 'Conflict'
+    case 422:
+      return 'Validation failed'
+    case 500:
+      return 'Internal server error'
+    case 502:
+      return 'Bad gateway'
+    case 503:
+      return 'Service unavailable'
+    default:
+      return undefined
   }
 }
 

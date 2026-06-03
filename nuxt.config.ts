@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { fileURLToPath } from 'node:url'
+import { THEME_INIT_SCRIPT } from './src/_core/theme/theme_init_script'
 
 const srcRoot = fileURLToPath(new URL('./src', import.meta.url))
 
@@ -7,6 +8,20 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   srcDir: 'src/',
+  app: {
+    head: {
+      script: [
+        {
+          key: 'theme-init',
+          type: 'text/javascript',
+          innerHTML: THEME_INIT_SCRIPT,
+          tagPosition: 'head'
+        }
+      ],
+      // Allow the blocking theme bootstrap script above.
+      __dangerouslyDisableSanitizers: ['script']
+    }
+  },
   // Nuxt scans `src/plugins/`; explicit list guarantees load order (http → di → network).
   plugins: [
     '~/plugins/http.ts',

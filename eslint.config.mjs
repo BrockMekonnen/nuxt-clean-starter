@@ -38,6 +38,12 @@ export default withNuxt(
       ]
     }
   },
+  {
+    files: ['nuxt.config.ts', 'vitest.config.ts', 'eslint.config.mjs'],
+    rules: {
+      'no-restricted-imports': 'off'
+    }
+  },
   // Keep ESLint and Prettier from fighting over formatting.
   prettier
 )

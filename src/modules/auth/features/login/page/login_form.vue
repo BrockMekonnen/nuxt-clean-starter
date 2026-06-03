@@ -47,7 +47,9 @@
               type="button"
               class="absolute inset-y-0 right-2 flex items-center px-2 text-muted hover:text-text"
               :aria-label="
-                isPasswordVisible ? 'Hide password' : 'Show password'
+                isPasswordVisible
+                  ? t('loginPage.hidePassword')
+                  : t('loginPage.showPassword')
               "
               @click="isPasswordVisible = !isPasswordVisible"
             >
@@ -124,16 +126,16 @@ function validate(): boolean {
 
   const trimmedEmail = email.value.trim()
   if (!trimmedEmail) {
-    fieldErrors.email = `${t('loginPage.emailAddress')} is required`
+    fieldErrors.email = t('loginPage.emailRequired')
     return false
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
-    fieldErrors.email = 'Invalid email address'
+    fieldErrors.email = t('loginPage.invalidEmail')
     return false
   }
 
   if (!password.value) {
-    fieldErrors.password = `${t('loginPage.password')} is required`
+    fieldErrors.password = t('loginPage.passwordRequired')
     return false
   }
   if (password.value.length < 8) {

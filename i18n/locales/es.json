@@ -14,6 +14,11 @@
     "dontHaveAccount": "¿No tienes cuenta?",
     "signUp": "Registrarse",
     "emailAddress": "Correo electrónico",
+    "emailRequired": "El correo electrónico es obligatorio",
+    "invalidEmail": "Correo electrónico no válido",
+    "passwordRequired": "La contraseña es obligatoria",
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña",
     "passwordMinLengthErrorMessage": "La contraseña debe tener al menos 8 caracteres",
     "passwordSpecialCharacterErrorMessage": "La contraseña debe incluir al menos un carácter especial"
   },
@@ -49,6 +54,10 @@
     "title": "Perfil"
   },
   "errorPage": {
+    "title": "Algo salió mal",
+    "message": "Ocurrió un error inesperado. Inténtalo de nuevo.",
+    "notFoundTitle": "Página no encontrada",
+    "goHome": "Ir al inicio",
     "unauthorizedTitle": "No autorizado",
     "unauthorizedMessage": "Inicia sesión para acceder a esta página."
   },

@@ -3,7 +3,8 @@
 
 @config '../../../tailwind.config.ts';
 
-html {
+/* `data-theme` is set in <head> before paint (see theme_init_script.ts). */
+html[data-theme='dark'] {
   color-scheme: dark;
 }
 html[data-theme='light'] {

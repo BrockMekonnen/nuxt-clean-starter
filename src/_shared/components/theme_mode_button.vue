@@ -20,7 +20,11 @@ import AppIcon from './app_icon.vue'
 const { t } = useI18n()
 const nuxtApp = useNuxtApp()
 
-const isDark = ref(true)
+const isDark = ref(
+  import.meta.client
+    ? document.documentElement.dataset.theme !== 'light'
+    : true
+)
 
 onMounted(() => {
   isDark.value = nuxtApp.$theme?.get() === 'dark'

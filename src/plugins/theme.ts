@@ -1,41 +1,57 @@
-const STORAGE_KEY = 'theme'
+import {
+  isTheme,
+  THEME_COOKIE_NAME,
+  THEME_STORAGE_KEY,
+  type Theme
+} from '@core/theme/constants'
 
-type Theme = 'dark' | 'light'
-
-function getPreferredTheme(): Theme {
+function systemTheme(): Theme {
   if (!import.meta.client) return 'dark'
   return window.matchMedia?.('(prefers-color-scheme: light)').matches
     ? 'light'
     : 'dark'
 }
 
+function readThemeFromDom(): Theme {
+  if (!import.meta.client) return 'dark'
+  const value = document.documentElement.dataset.theme
+  return isTheme(value) ? value : systemTheme()
+}
+
 function applyTheme(theme: Theme) {
   if (!import.meta.client) return
   document.documentElement.dataset.theme = theme
+  localStorage.setItem(THEME_STORAGE_KEY, theme)
+  const cookie = useCookie<Theme>(THEME_COOKIE_NAME, {
+    maxAge: 60 * 60 * 24 * 365,
+    sameSite: 'lax'
+  })
+  cookie.value = theme
 }
 
 export default defineNuxtPlugin(() => {
   if (import.meta.client) {
-    const saved = (localStorage.getItem(STORAGE_KEY) as Theme | null) ?? null
-    applyTheme(saved ?? getPreferredTheme())
+    // Inline head script already set data-theme; align storage + cookie.
+    const theme = readThemeFromDom()
+    const stored = localStorage.getItem(THEME_STORAGE_KEY)
+    if (isTheme(stored) && stored !== theme) {
+      applyTheme(stored)
+    } else {
+      applyTheme(theme)
+    }
   }
 
   return {
     provide: {
       theme: {
         get(): Theme {
-          if (!import.meta.client) return 'dark'
-          return (document.documentElement.dataset.theme as Theme) || 'dark'
+          return readThemeFromDom()
         },
         set(theme: Theme) {
-          if (!import.meta.client) return
-          localStorage.setItem(STORAGE_KEY, theme)
           applyTheme(theme)
         },
         toggle() {
-          if (!import.meta.client) return
-          const next: Theme = this.get() === 'dark' ? 'light' : 'dark'
-          localStorage.setItem(STORAGE_KEY, next)
+          const next: Theme = readThemeFromDom() === 'dark' ? 'light' : 'dark'
           applyTheme(next)
         }
       }
