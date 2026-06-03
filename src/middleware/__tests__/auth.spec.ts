@@ -13,6 +13,7 @@ mockNuxtImport('useCookie', () => mocks.useCookie)
 mockNuxtImport('useAuthStore', () => mocks.useAuthStore)
 
 const authMiddleware = (await import('../auth')).default
+const from = {} as never
 
 beforeEach(() => {
   vi.clearAllMocks()
@@ -22,20 +23,26 @@ beforeEach(() => {
 
 describe('auth middleware', () => {
   it('allows public routes', async () => {
-    const result = await authMiddleware({
-      meta: {},
-      fullPath: '/'
-    } as never)
+    const result = await authMiddleware(
+      {
+        meta: {},
+        fullPath: '/'
+      } as never,
+      from
+    )
 
     expect(result).toBeUndefined()
     expect(mocks.navigateTo).not.toHaveBeenCalled()
   })
 
   it('redirects to login with return path when unauthenticated', async () => {
-    await authMiddleware({
-      meta: { requiresAuth: true },
-      fullPath: '/settings'
-    } as never)
+    await authMiddleware(
+      {
+        meta: { requiresAuth: true },
+        fullPath: '/settings'
+      } as never,
+      from
+    )
 
     expect(mocks.navigateTo).toHaveBeenCalledWith({
       path: '/login',

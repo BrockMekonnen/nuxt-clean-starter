@@ -13,6 +13,7 @@ mockNuxtImport('useCookie', () => mocks.useCookie)
 mockNuxtImport('useAuthStore', () => mocks.useAuthStore)
 
 const guestMiddleware = (await import('../guest')).default
+const from = {} as never
 
 beforeEach(() => {
   vi.clearAllMocks()
@@ -22,10 +23,13 @@ beforeEach(() => {
 
 describe('guest middleware', () => {
   it('allows guests to open login', async () => {
-    const result = await guestMiddleware({
-      meta: { guestOnly: true },
-      path: '/login'
-    } as never)
+    const result = await guestMiddleware(
+      {
+        meta: { guestOnly: true },
+        path: '/login'
+      } as never,
+      from
+    )
 
     expect(result).toBeUndefined()
     expect(mocks.navigateTo).not.toHaveBeenCalled()
@@ -34,10 +38,13 @@ describe('guest middleware', () => {
   it('redirects when an auth cookie is present', async () => {
     mocks.useCookie.mockReturnValue({ value: 'token-abc' })
 
-    await guestMiddleware({
-      meta: { guestOnly: true },
-      path: '/login'
-    } as never)
+    await guestMiddleware(
+      {
+        meta: { guestOnly: true },
+        path: '/login'
+      } as never,
+      from
+    )
 
     expect(mocks.navigateTo).toHaveBeenCalledWith('/home')
   })
@@ -45,10 +52,13 @@ describe('guest middleware', () => {
   it('redirects when the auth store is authenticated', async () => {
     mocks.useAuthStore.mockReturnValue({ isAuthenticated: true })
 
-    await guestMiddleware({
-      meta: { guestOnly: true },
-      path: '/login'
-    } as never)
+    await guestMiddleware(
+      {
+        meta: { guestOnly: true },
+        path: '/login'
+      } as never,
+      from
+    )
 
     expect(mocks.navigateTo).toHaveBeenCalledWith('/home')
   })
