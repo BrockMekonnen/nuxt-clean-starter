@@ -53,12 +53,27 @@
     "logout": "Logout",
     "more": "More",
     "changeLanguage": "Change Language",
-    "changeTheme": "Change Theme"
+    "changeTheme": "Change Theme",
+    "back": "Back"
   },
   "homePage": {
     "title": "Home",
     "hello": "Hello",
-    "guest": "Guest"
+    "guest": "Guest",
+    "viewDetails": "View details"
+  },
+  "homeDetailsPage": {
+    "title": "Account details",
+    "backToHome": "Back to home",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phone": "Phone",
+    "userId": "User ID",
+    "emailVerified": "Email verified",
+    "roles": "Roles",
+    "yes": "Yes",
+    "no": "No"
   },
   "settingsPage": {
     "title": "Settings",

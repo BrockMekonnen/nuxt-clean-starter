@@ -53,12 +53,27 @@
     "logout": "تسجيل الخروج",
     "more": "المزيد",
     "changeLanguage": "تغيير اللغة",
-    "changeTheme": "تغيير المظهر"
+    "changeTheme": "تغيير المظهر",
+    "back": "رجوع"
   },
   "homePage": {
     "title": "الرئيسية",
     "hello": "مرحبًا",
-    "guest": "زائر"
+    "guest": "زائر",
+    "viewDetails": "عرض التفاصيل"
+  },
+  "homeDetailsPage": {
+    "title": "تفاصيل الحساب",
+    "backToHome": "العودة إلى الرئيسية",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "userId": "معرّف المستخدم",
+    "emailVerified": "البريد موثّق",
+    "roles": "الأدوار",
+    "yes": "نعم",
+    "no": "لا"
   },
   "settingsPage": {
     "title": "الإعدادات",

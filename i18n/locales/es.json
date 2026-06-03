@@ -53,12 +53,27 @@
     "logout": "Cerrar sesión",
     "more": "Más",
     "changeLanguage": "Cambiar idioma",
-    "changeTheme": "Cambiar tema"
+    "changeTheme": "Cambiar tema",
+    "back": "Atrás"
   },
   "homePage": {
     "title": "Inicio",
     "hello": "Hola",
-    "guest": "Invitado"
+    "guest": "Invitado",
+    "viewDetails": "Ver detalles"
+  },
+  "homeDetailsPage": {
+    "title": "Detalles de la cuenta",
+    "backToHome": "Volver al inicio",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "userId": "ID de usuario",
+    "emailVerified": "Correo verificado",
+    "roles": "Roles",
+    "yes": "Sí",
+    "no": "No"
   },
   "settingsPage": {
     "title": "Ajustes",

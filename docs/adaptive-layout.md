@@ -46,6 +46,23 @@ definePageMeta({
 </script>
 ```
 
+### Drill-down routes (app bar back)
+
+Child routes (e.g. `/home/details`) should not add inline back links in the page body. Opt in on the route:
+
+```ts
+definePageMeta({
+  layout: 'app',
+  appTitle: 'homeDetailsPage.title',
+  navTab: 'home', // keep parent tab selected
+  showAppBarBack: true,
+  backTo: '/home', // used when history is empty (direct URL / refresh)
+  hideNavOnMobile: true // optional: bottom nav hidden on small screens (drill-down)
+})
+```
+
+`AdaptiveAppHeader` shows a leading back control. It calls `router.back()` when possible, otherwise `navigateTo(backTo)`. Mirrors Flutter `AppBar` + `Navigator.pop`.
+
 Unauthenticated users are sent to `/login?redirect=…` (see [auth-and-routing.md](./auth-and-routing.md)).
 
 ## Guest-only routes (landing, login)

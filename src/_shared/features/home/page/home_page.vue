@@ -20,6 +20,13 @@
       <p v-if="userId" class="mt-1 text-center text-sm text-muted">
         ID: {{ userId }}
       </p>
+
+      <NuxtLink
+        to="/home/details"
+        class="mt-8 flex h-11 w-full items-center justify-center rounded-lg border border-primary/40 bg-primary/10 text-sm font-semibold text-primary transition hover:bg-primary/20"
+      >
+        {{ t('homePage.viewDetails') }}
+      </NuxtLink>
     </div>
   </div>
 </template>

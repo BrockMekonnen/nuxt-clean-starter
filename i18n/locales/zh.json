@@ -53,12 +53,27 @@
     "logout": "退出登录",
     "more": "更多",
     "changeLanguage": "切换语言",
-    "changeTheme": "切换主题"
+    "changeTheme": "切换主题",
+    "back": "返回"
   },
   "homePage": {
     "title": "首页",
     "hello": "你好",
-    "guest": "访客"
+    "guest": "访客",
+    "viewDetails": "查看详情"
+  },
+  "homeDetailsPage": {
+    "title": "账户详情",
+    "backToHome": "返回首页",
+    "firstName": "名",
+    "lastName": "姓",
+    "email": "邮箱",
+    "phone": "电话",
+    "userId": "用户 ID",
+    "emailVerified": "邮箱已验证",
+    "roles": "角色",
+    "yes": "是",
+    "no": "否"
   },
   "settingsPage": {
     "title": "设置",

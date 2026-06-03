@@ -19,7 +19,8 @@ export const AppIcons = {
   visibilityOff: 'mdi:eye-off',
   github: 'mdi:github',
   person: 'mdi:account-circle',
-  todos: 'mdi:format-list-checks'
+  todos: 'mdi:format-list-checks',
+  arrowBack: 'mdi:arrow-left'
 } as const
 
 export type AppIconName = (typeof AppIcons)[keyof typeof AppIcons]

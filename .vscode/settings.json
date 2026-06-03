@@ -1,4 +1,6 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsconfigPath": "tsconfig.app.json",
+  "vue.server.configFilePath": ".nuxt/tsconfig.app.json"
 }
