@@ -23,10 +23,10 @@ Track fixes and enhancements for **nuxt-clean-starter** as a large-project templ
 
 ## P2 — Production hardening
 
-- [ ] Add `server/api` BFF proxy example to `runtimeConfig.public.apiBase` (hide upstream URL, simplify CORS)
-- [ ] Validate runtime config at boot/build (e.g. Zod / `nuxt-schema-zod`) for required `NUXT_PUBLIC_*` vars
-- [ ] Add Playwright (or Cypress) smoke tests: guest redirect, login → home
-- [ ] Enforce layer imports in CI (`eslint-plugin-boundaries` or `dependency-cruiser`: ban `domain` → `data`, etc.)
+- [x] Add `server/api` BFF proxy example to `runtimeConfig.public.apiBase` (hide upstream URL, simplify CORS)
+- [x] Validate runtime config at boot/build (e.g. Zod / `nuxt-schema-zod`) for required `NUXT_PUBLIC_*` vars
+- [x] Add Playwright (or Cypress) smoke tests: guest redirect, login → home
+- [x] Enforce layer imports in CI (`eslint-plugin-boundaries` or `dependency-cruiser`: ban `domain` → `data`, etc.)
 
 ---
 

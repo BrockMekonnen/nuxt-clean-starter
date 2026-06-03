@@ -38,8 +38,16 @@ cp .env.example .env   # optional: point NUXT_PUBLIC_API_BASE at your API
 Run before opening a PR:
 
 ```bash
-npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build
+npm run typecheck && npm run lint && npm run format:check && npm run test && npm run depcruise && npm run build
 ```
+
+Optional before merge (also runs in CI):
+
+```bash
+npm run build && npm run test:e2e
+```
+
+Playwright mocks the auth API in the **browser** only. E2e covers login → home; guest middleware is covered by `src/middleware/__tests__/guest.spec.ts`.
 
 ---
 
@@ -117,6 +125,7 @@ When you add a pattern others should copy:
 - [ ] `npm run format:check` passes (or `npm run format` on touched files)
 - [ ] `npm run test` passes
 - [ ] `npm run build` passes
+- [ ] `npm run depcruise` passes (module layer boundaries)
 - [ ] New routes use thin `pages/` + feature `page/` components
 - [ ] Cross-layer imports use `@core` / `@shared` / `@modules`
 - [ ] i18n keys added for new user-visible strings (all locale files if you add keys)

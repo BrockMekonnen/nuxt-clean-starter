@@ -233,7 +233,11 @@ Use `auth` or `todo` as a template. Checklist:
 
 ## API configuration
 
-`NUXT_PUBLIC_API_BASE` → `runtimeConfig.public.apiBase` (see `.env.example`). Paths live in `src/_core/constants.ts` (`ApiPaths`).
+`NUXT_PUBLIC_API_BASE` → `runtimeConfig.public.apiBase` (default `/api`, same-origin BFF). Server-only `NUXT_API_UPSTREAM` feeds `src/server/api/[...path].ts`. Env vars are validated with Zod at boot — see [api-proxy.md](./api-proxy.md). Paths live in `src/_core/constants.ts` (`ApiPaths`).
+
+## Layer boundaries in CI
+
+`npm run depcruise` enforces rules in `.dependency-cruiser.cjs` (e.g. `domain` must not import `data`).
 
 ---
 

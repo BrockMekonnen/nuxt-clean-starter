@@ -91,7 +91,14 @@ npm run format      # Prettier write (use format:check in CI)
 npm run test        # Vitest (watch via test:watch)
 ```
 
-CI runs the same checks on push/PR (see `.github/workflows/ci.yml`). After `npm install`, Husky runs lint-staged on commit.
+CI runs the same checks on push/PR (see `.github/workflows/ci.yml`), plus `depcruise` and Playwright e2e. After `npm install`, Husky runs lint-staged on commit.
+
+```bash
+npm run depcruise   # layer dependency rules
+npm run build && npm run test:e2e   # Playwright preview (mocks auth API)
+```
+
+API BFF proxy: [docs/api-proxy.md](./docs/api-proxy.md).
 
 - **Imports** must use the `@core` / `@shared` / `@modules` aliases for cross-layer
   references; deep relative imports are blocked by ESLint.

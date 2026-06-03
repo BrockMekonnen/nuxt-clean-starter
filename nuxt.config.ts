@@ -1,13 +1,34 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { fileURLToPath } from 'node:url'
+import { validateRuntimeEnv } from './src/_core/config/validate_runtime_env'
 import { THEME_INIT_SCRIPT } from './src/_core/theme/theme_init_script'
 
 const srcRoot = fileURLToPath(new URL('./src', import.meta.url))
+const { apiBase, apiUpstream } = validateRuntimeEnv()
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   srcDir: 'src/',
+  serverDir: `${srcRoot}/server`,
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: apiUpstream,
+        changeOrigin: true
+      }
+    },
+    // Keep reflect-metadata in the production server bundle (required by tsyringe).
+    moduleSideEffects: ['reflect-metadata'],
+    hooks: {
+      'rollup:before'(ctx) {
+        ctx.options.moduleSideEffects ??= []
+        if (!ctx.options.moduleSideEffects.includes('reflect-metadata')) {
+          ctx.options.moduleSideEffects.push('reflect-metadata')
+        }
+      }
+    }
+  },
   app: {
     head: {
       script: [
@@ -24,6 +45,7 @@ export default defineNuxtConfig({
   },
   // Nuxt scans `src/plugins/`; explicit list guarantees load order (http → di → network).
   plugins: [
+    '~/plugins/00.reflect-metadata.ts',
     '~/plugins/http.ts',
     '~/plugins/theme.ts',
     '~/plugins/10.di.ts',
@@ -50,8 +72,11 @@ export default defineNuxtConfig({
     '@modules': `${srcRoot}/modules`
   },
   runtimeConfig: {
+    /** Server-only upstream for `src/server/api/[...].ts` BFF proxy. */
+    apiUpstream,
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://0.0.0.0:9090/api'
+      /** Client HTTP base (`/api` = same-origin BFF). See docs/api-proxy.md. */
+      apiBase
     }
   },
   postcss: {

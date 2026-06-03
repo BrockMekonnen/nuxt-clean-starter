@@ -15,6 +15,8 @@
     "typecheck": "tsc -p .nuxt/tsconfig.app.json --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "depcruise": "depcruise src --config .dependency-cruiser.cjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
@@ -36,9 +38,11 @@
     "reflect-metadata": "^0.2.2",
     "tsyringe": "^4.10.0",
     "vue": "^3.5.34",
-    "vue-router": "^5.0.7"
+    "vue-router": "^5.0.7",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@iconify-json/mdi": "^1.2.3",
     "@nuxt/eslint": "^1.15.2",
     "@nuxt/test-utils": "^4.0.3",
@@ -47,6 +51,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "@vue/test-utils": "^2.4.10",
     "autoprefixer": "^10.5.0",
+    "dependency-cruiser": "^17.3.8",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
