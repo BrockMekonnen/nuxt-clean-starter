@@ -34,6 +34,7 @@
   },
   "layoutPage": {
     "home": "Home",
+    "todos": "Todos",
     "profile": "Profile",
     "settings": "Settings",
     "logout": "Logout",
@@ -52,6 +53,15 @@
   },
   "profilePage": {
     "title": "Profile"
+  },
+  "todoPage": {
+    "title": "Todos",
+    "subtitle": "Sample feature module with local persistence (no API).",
+    "placeholder": "What needs to be done?",
+    "add": "Add",
+    "remove": "Remove",
+    "empty": "No todos yet. Add one above.",
+    "loading": "Loading…"
   },
   "errorPage": {
     "title": "Something went wrong",

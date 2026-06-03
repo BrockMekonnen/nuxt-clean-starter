@@ -16,22 +16,24 @@ npm install
 cp .env.example .env   # optional: point NUXT_PUBLIC_API_BASE at your API
 ```
 
+`npm install` enables **Husky** pre-commit hooks (via the `prepare` script). Staged files run ESLint and Prettier through **lint-staged**.
+
 ---
 
 ## npm scripts
 
-| Script | Purpose |
-|--------|---------|
-| `npm run dev` | Development server (http://localhost:3000) |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build locally |
-| `npm run typecheck` | TypeScript check (Nuxt-generated tsconfig) |
-| `npm run lint` | ESLint |
-| `npm run lint:fix` | ESLint with auto-fix |
-| `npm run format` | Prettier write |
-| `npm run format:check` | Prettier check (use in CI) |
-| `npm run test` | Vitest (single run) |
-| `npm run test:watch` | Vitest watch mode |
+| Script                 | Purpose                                    |
+| ---------------------- | ------------------------------------------ |
+| `npm run dev`          | Development server (http://localhost:3000) |
+| `npm run build`        | Production build                           |
+| `npm run preview`      | Preview production build locally           |
+| `npm run typecheck`    | TypeScript check (Nuxt-generated tsconfig) |
+| `npm run lint`         | ESLint                                     |
+| `npm run lint:fix`     | ESLint with auto-fix                       |
+| `npm run format`       | Prettier write                             |
+| `npm run format:check` | Prettier check (use in CI)                 |
+| `npm run test`         | Vitest (single run)                        |
+| `npm run test:watch`   | Vitest watch mode                          |
 
 Run before opening a PR:
 
@@ -45,10 +47,10 @@ npm run typecheck && npm run lint && npm run format:check && npm run test && npm
 
 Use path aliases for anything that crosses `_core`, `_shared`, or `modules`:
 
-| Alias | Maps to |
-|-------|---------|
-| `@core/*` | `src/_core/*` |
-| `@shared/*` | `src/_shared/*` |
+| Alias        | Maps to         |
+| ------------ | --------------- |
+| `@core/*`    | `src/_core/*`   |
+| `@shared/*`  | `src/_shared/*` |
 | `@modules/*` | `src/modules/*` |
 
 Deep relative imports into those trees are **blocked by ESLint** (`no-restricted-imports` in `eslint.config.mjs`).
@@ -59,16 +61,16 @@ Within the same folder, relative imports (`./user.ts`) are fine.
 
 ## Where code goes
 
-| Change | Location |
-|--------|----------|
-| New business feature | `src/modules/<feature>/` (see [architecture.md](./docs/architecture.md)) |
-| New route URL | `src/pages/<name>.vue` (thin wrapper) |
-| Shared screen used by many modules | `src/_shared/features/...` |
-| HTTP, DI, layout shell | `src/_core/` |
-| Route guard | `src/middleware/` |
-| App bootstrap | `src/plugins/` (order matters — see `nuxt.config.ts`) |
-| Translations | `i18n/locales/*.json` |
-| Global types | `src/types/*.d.ts` |
+| Change                             | Location                                                                 |
+| ---------------------------------- | ------------------------------------------------------------------------ |
+| New business feature               | `src/modules/<feature>/` (see [architecture.md](./docs/architecture.md)) |
+| New route URL                      | `src/pages/<name>.vue` (thin wrapper)                                    |
+| Shared screen used by many modules | `src/_shared/features/...`                                               |
+| HTTP, DI, layout shell             | `src/_core/`                                                             |
+| Route guard                        | `src/middleware/`                                                        |
+| App bootstrap                      | `src/plugins/` (order matters — see `nuxt.config.ts`)                    |
+| Translations                       | `i18n/locales/*.json`                                                    |
+| Global types                       | `src/types/*.d.ts`                                                       |
 
 ---
 

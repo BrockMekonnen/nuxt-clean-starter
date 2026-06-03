@@ -15,9 +15,9 @@ Track fixes and enhancements for **nuxt-clean-starter** as a large-project templ
 
 ## P1 — Team scale and CI
 
-- [ ] Add GitHub Actions workflow: `npm ci` → `typecheck` → `lint` → `format:check` → `test` → `build`
-- [ ] Add pre-commit hooks (`lint-staged` + Husky or `simple-git-hooks`) for ESLint + Prettier on staged files
-- [ ] Add a second reference module (e.g. minimal `todo` or flesh out `user`): domain, data, store, feature page, nav, tests
+- [x] Add GitHub Actions workflow: `npm ci` → `typecheck` → `lint` → `format:check` → `test` → `build`
+- [x] Add pre-commit hooks (`lint-staged` + Husky or `simple-git-hooks`) for ESLint + Prettier on staged files
+- [x] Add a second reference module (e.g. minimal `todo` or flesh out `user`): domain, data, store, feature page, nav, tests
 
 ---
 
@@ -46,7 +46,7 @@ Track fixes and enhancements for **nuxt-clean-starter** as a large-project templ
 - [ ] Document or implement post-register behavior (auto-login vs redirect to login)
 - [ ] Document protected-route UX: middleware sends to `/errors/401` vs redirect to `/login` (pick convention)
 - [ ] Wire `ConnectionFailure` / `network.store` into repositories or global error handling (offline-aware flows)
-- [ ] Replace empty `modules/user/.gitKeep` with real scaffold or rely on second sample module (see P1)
+- [x] Replace empty `modules/user/.gitKeep` with real scaffold or rely on second sample module (see P1)
 
 ---
 

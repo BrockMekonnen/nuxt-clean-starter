@@ -91,6 +91,8 @@ npm run format      # Prettier write (use format:check in CI)
 npm run test        # Vitest (watch via test:watch)
 ```
 
+CI runs the same checks on push/PR (see `.github/workflows/ci.yml`). After `npm install`, Husky runs lint-staged on commit.
+
 - **Imports** must use the `@core` / `@shared` / `@modules` aliases for cross-layer
   references; deep relative imports are blocked by ESLint.
 - **Tests** live in `__tests__/` next to the code. Pure domain/data tests run in the
@@ -103,19 +105,19 @@ Tracked improvements (architecture review, CI, docs): [docs/template-improvement
 
 ## Adding a module
 
-Copy **`src/modules/auth/`**. Full conventions: [docs/architecture.md](./docs/architecture.md).
+Copy **`src/modules/auth/`** or the smaller **`src/modules/todo/`** (local persistence, no API). Full conventions: [docs/architecture.md](./docs/architecture.md).
 
-| Step | Action |
-|------|--------|
-| 1 | Create `src/modules/<feature>/` with `domain/`, `data/`, `stores/`, `features/`, `__tests__/` |
-| 2 | **Domain** — repository interface, entities, `<Feature>Usecases` (throw `ValidationFailure` for invalid input) |
-| 3 | **Data** — `*RepositoryImpl`, DTOs/mappers; use `ApiError.from` for HTTP errors |
-| 4 | **Tokens** — `<feature>_tokens.ts` (tsyringe symbols) |
-| 5 | **DI** — `register<Feature>Module(di)` in `<feature>_module.ts`, then call it from `src/_core/_init_modules.ts` |
-| 6 | **Store** — `stores/<feature>.store.ts`; actions resolve use cases via `$di`, not `$http` |
-| 7 | **Composable** (optional) — `features/<screen>/composables/use<Feature>.ts` |
-| 8 | **UI** — Vue screens under `features/<screen>/page/` |
-| 9 | **Routes** — thin `src/pages/<route>.vue` (layout, `middleware`, `definePageMeta`) importing feature pages |
-| 10 | **Nav** (if in app shell) — `<feature>_nav.ts` + register in `src/_core/layout/init_navigation.ts` |
-| 11 | **i18n** — add keys to `i18n/locales/en.json` (and `ar`, `es`, `zh` for parity) |
-| 12 | **Tests** — `__tests__/` for use cases and repository; `// @vitest-environment nuxt` for store tests if needed |
+| Step | Action                                                                                                          |
+| ---- | --------------------------------------------------------------------------------------------------------------- |
+| 1    | Create `src/modules/<feature>/` with `domain/`, `data/`, `stores/`, `features/`, `__tests__/`                   |
+| 2    | **Domain** — repository interface, entities, `<Feature>Usecases` (throw `ValidationFailure` for invalid input)  |
+| 3    | **Data** — `*RepositoryImpl`, DTOs/mappers; use `ApiError.from` for HTTP errors                                 |
+| 4    | **Tokens** — `<feature>_tokens.ts` (tsyringe symbols)                                                           |
+| 5    | **DI** — `register<Feature>Module(di)` in `<feature>_module.ts`, then call it from `src/_core/_init_modules.ts` |
+| 6    | **Store** — `stores/<feature>.store.ts`; actions resolve use cases via `$di`, not `$http`                       |
+| 7    | **Composable** (optional) — `features/<screen>/composables/use<Feature>.ts`                                     |
+| 8    | **UI** — Vue screens under `features/<screen>/page/`                                                            |
+| 9    | **Routes** — thin `src/pages/<route>.vue` (layout, `middleware`, `definePageMeta`) importing feature pages      |
+| 10   | **Nav** (if in app shell) — `<feature>_nav.ts` + register in `src/_core/layout/init_navigation.ts`              |
+| 11   | **i18n** — add keys to `i18n/locales/en.json` (and `ar`, `es`, `zh` for parity)                                 |
+| 12   | **Tests** — `__tests__/` for use cases and repository; `// @vitest-environment nuxt` for store tests if needed  |

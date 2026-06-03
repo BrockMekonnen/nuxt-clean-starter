@@ -21,9 +21,7 @@ const { t } = useI18n()
 const nuxtApp = useNuxtApp()
 
 const isDark = ref(
-  import.meta.client
-    ? document.documentElement.dataset.theme !== 'light'
-    : true
+  import.meta.client ? document.documentElement.dataset.theme !== 'light' : true
 )
 
 onMounted(() => {

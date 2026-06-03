@@ -34,6 +34,7 @@
   },
   "layoutPage": {
     "home": "Inicio",
+    "todos": "Tareas",
     "profile": "Perfil",
     "settings": "Ajustes",
     "logout": "Cerrar sesión",
@@ -52,6 +53,15 @@
   },
   "profilePage": {
     "title": "Perfil"
+  },
+  "todoPage": {
+    "title": "Tareas",
+    "subtitle": "Módulo de ejemplo con persistencia local (sin API).",
+    "placeholder": "¿Qué hay que hacer?",
+    "add": "Añadir",
+    "remove": "Eliminar",
+    "empty": "Aún no hay tareas. Añade una arriba.",
+    "loading": "Cargando…"
   },
   "errorPage": {
     "title": "Algo salió mal",

@@ -1,4 +1,5 @@
 import { registerAuthNavigation } from '@modules/auth/auth_nav'
+import { registerTodoNavigation } from '@modules/todo/todo_nav'
 import { registerSharedNavigation } from '@shared/shared_nav'
 
 let initialized = false
@@ -8,5 +9,6 @@ export function initNavigation() {
   if (initialized) return
   initialized = true
   registerSharedNavigation()
+  registerTodoNavigation()
   registerAuthNavigation()
 }

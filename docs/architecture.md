@@ -64,17 +64,17 @@ flowchart TB
 
 ## Top-level folders
 
-| Path | Purpose |
-|------|---------|
-| `src/_core/` | Cross-cutting infrastructure: DI, HTTP, errors, theme, adaptive layout, network |
-| `src/_shared/` | Shared UI and feature screens used by multiple modules (home, settings, landing) |
-| `src/modules/<feature>/` | Bounded context (business feature) |
-| `src/pages/` | **File-based routes only** — thin wrappers; no business logic |
-| `src/layouts/` | Nuxt layouts (`default`, `app`, `landing`) |
-| `src/middleware/` | Route guards (`auth`, `guest`) |
-| `src/plugins/` | Bootstrap: HTTP client, DI, theme, auth session |
-| `src/types/` | TypeScript augmentations (`PageMeta`, `$di`, `$http`) |
-| `i18n/locales/` | Translation JSON files |
+| Path                     | Purpose                                                                          |
+| ------------------------ | -------------------------------------------------------------------------------- |
+| `src/_core/`             | Cross-cutting infrastructure: DI, HTTP, errors, theme, adaptive layout, network  |
+| `src/_shared/`           | Shared UI and feature screens used by multiple modules (home, settings, landing) |
+| `src/modules/<feature>/` | Bounded context (business feature)                                               |
+| `src/pages/`             | **File-based routes only** — thin wrappers; no business logic                    |
+| `src/layouts/`           | Nuxt layouts (`default`, `app`, `landing`)                                       |
+| `src/middleware/`        | Route guards (`auth`, `guest`)                                                   |
+| `src/plugins/`           | Bootstrap: HTTP client, DI, theme, auth session                                  |
+| `src/types/`             | TypeScript augmentations (`PageMeta`, `$di`, `$http`)                            |
+| `i18n/locales/`          | Translation JSON files                                                           |
 
 ---
 
@@ -110,14 +110,14 @@ modules/<feature>/
 
 Imports must use aliases for cross-root references: `@core`, `@shared`, `@modules` (enforced by ESLint).
 
-| From → To | Allowed |
-|-----------|---------|
-| `domain/` | Other `domain/` files, `@core/error` (failures only) |
-| `data/` | `domain/`, `@core/http`, `@core/constants` |
-| `stores/` | `domain/`, `@core`, same module tokens |
+| From → To   | Allowed                                                        |
+| ----------- | -------------------------------------------------------------- |
+| `domain/`   | Other `domain/` files, `@core/error` (failures only)           |
+| `data/`     | `domain/`, `@core/http`, `@core/constants`                     |
+| `stores/`   | `domain/`, `@core`, same module tokens                         |
 | `features/` | `stores/`, composables, `@shared`, `@core` (icons/layout only) |
-| `pages/` | Feature `page/` components, nav constants, `definePageMeta` |
-| `_core/` | Must not import `modules/` or `_shared/features` |
+| `pages/`    | Feature `page/` components, nav constants, `definePageMeta`    |
+| `_core/`    | Must not import `modules/` or `_shared/features`               |
 
 **Do not:**
 
@@ -133,11 +133,11 @@ Nuxt **auto-imports** are limited to composables under `_core/**/composables`, `
 
 Nuxt requires routes under `src/pages/`. Feature UI lives in modules so routing stays decoupled from implementation.
 
-| | `src/pages/login.vue` | `modules/auth/features/login/page/login_page.vue` |
-|--|-------------------------|---------------------------------------------------|
-| **Role** | URL, layout, middleware, `definePageMeta` | Screen UI, forms, composables |
-| **Imports** | One feature page component | `@shared`, `useAuth()`, etc. |
-| **Changes when** | Route path, auth guard, nav tab, layout | UX, fields, module logic |
+|                  | `src/pages/login.vue`                     | `modules/auth/features/login/page/login_page.vue` |
+| ---------------- | ----------------------------------------- | ------------------------------------------------- |
+| **Role**         | URL, layout, middleware, `definePageMeta` | Screen UI, forms, composables                     |
+| **Imports**      | One feature page component                | `@shared`, `useAuth()`, etc.                      |
+| **Changes when** | Route path, auth guard, nav tab, layout   | UX, fields, module logic                          |
 
 Example thin page:
 
@@ -176,13 +176,13 @@ Register new modules in `src/_core/_init_modules.ts`.
 
 ## State and errors
 
-| Concern | Where |
-|---------|--------|
-| Business logic | `domain/*_usecases.ts` |
-| API / storage | `data/*_repository_impl.ts` |
-| Session / shared UI state | `stores/*.store.ts` |
-| Page-facing API | `features/**/composables/use*.ts` |
-| User-facing errors | `@core/error/failures.ts`, `failureMessage()` in stores |
+| Concern                   | Where                                                   |
+| ------------------------- | ------------------------------------------------------- |
+| Business logic            | `domain/*_usecases.ts`                                  |
+| API / storage             | `data/*_repository_impl.ts`                             |
+| Session / shared UI state | `stores/*.store.ts`                                     |
+| Page-facing API           | `features/**/composables/use*.ts`                       |
+| User-facing errors        | `@core/error/failures.ts`, `failureMessage()` in stores |
 
 See [state-management.md](./state-management.md).
 
@@ -198,10 +198,10 @@ See [state-management.md](./state-management.md).
 
 ## Route guards
 
-| Meta | Middleware | Behavior |
-|------|------------|----------|
-| `requiresAuth: true` | `auth` | Redirect to `/errors/401` if no cookie / session |
-| `guestOnly: true` | `guest` | Redirect authenticated users to first nav route |
+| Meta                 | Middleware | Behavior                                         |
+| -------------------- | ---------- | ------------------------------------------------ |
+| `requiresAuth: true` | `auth`     | Redirect to `/errors/401` if no cookie / session |
+| `guestOnly: true`    | `guest`    | Redirect authenticated users to first nav route  |
 
 Typed in `src/types/page-meta.d.ts`. Middleware is **opt-in per page** (not global).
 
@@ -209,7 +209,12 @@ Typed in `src/types/page-meta.d.ts`. Middleware is **opt-in per page** (not glob
 
 ## Adding a feature module
 
-Use `auth` as the reference. Checklist:
+Reference modules:
+
+- **`auth`** — API-backed login/session (cookie + optional localStorage user cache)
+- **`todo`** — local-only CRUD with `localStorage` persistence (no backend required)
+
+Use `auth` or `todo` as a template. Checklist:
 
 1. **Scaffold** `src/modules/<feature>/` with `domain/`, `data/`, `stores/`, `features/`, `__tests__/`.
 2. **Domain** — repository interface, entities, `<Feature>Usecases` with validation (`ValidationFailure`).

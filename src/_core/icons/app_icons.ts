@@ -18,7 +18,8 @@ export const AppIcons = {
   visibility: 'mdi:eye',
   visibilityOff: 'mdi:eye-off',
   github: 'mdi:github',
-  person: 'mdi:account-circle'
+  person: 'mdi:account-circle',
+  todos: 'mdi:format-list-checks'
 } as const
 
 export type AppIconName = (typeof AppIcons)[keyof typeof AppIcons]

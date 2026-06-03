@@ -34,6 +34,7 @@
   },
   "layoutPage": {
     "home": "首页",
+    "todos": "待办",
     "profile": "个人资料",
     "settings": "设置",
     "logout": "退出登录",
@@ -52,6 +53,15 @@
   },
   "profilePage": {
     "title": "个人资料"
+  },
+  "todoPage": {
+    "title": "待办",
+    "subtitle": "示例功能模块，使用本地存储（无 API）。",
+    "placeholder": "需要做什么？",
+    "add": "添加",
+    "remove": "删除",
+    "empty": "暂无待办，请在上方添加。",
+    "loading": "加载中…"
   },
   "errorPage": {
     "title": "出错了",
