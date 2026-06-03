@@ -19,6 +19,17 @@ This mirrors the Flutter starter: **Bloc/Cubit** ≈ Pinia stores, **GetIt** ≈
 - **Composable only** — thin helper with no shared state, or wrapping a store (`useAuth`).
 - **Component `ref`** — validation errors, open/closed modals, input values.
 
+## User feedback (errors & toasts)
+
+| Situation                                | Pattern                            | Example                      |
+| ---------------------------------------- | ---------------------------------- | ---------------------------- |
+| Field validation                         | Inline under the input             | Login email/password         |
+| Async action failure (API, store action) | `useAppNotification().showError()` | Login/register/todo failures |
+| Global / persistent condition            | Top banner in `app.vue`            | `network_offline_banner.vue` |
+| Page context the user must read          | Inline alert on the page           | “Account created” on login   |
+
+Stores may still set `errorMessage` for tests; pages show toasts in `catch` via `failureMessage(err)` (same idea as Flutter `BlocListener` + `CustomToast`).
+
 Avoid putting business rules in stores: call **use cases** from store actions (see `auth.store.ts`).
 
 ## Module layout

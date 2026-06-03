@@ -1,5 +1,6 @@
 <template>
   <NuxtRouteAnnouncer />
+  <AppToastHost />
   <NetworkOfflineBanner />
   <NuxtLayout>
     <NuxtPage />
@@ -8,6 +9,7 @@
 
 <script setup lang="ts">
 import { isTheme, THEME_COOKIE_NAME } from '@core/theme/constants'
+import AppToastHost from '@shared/components/app_toast_host.vue'
 import NetworkOfflineBanner from '@shared/components/network_offline_banner.vue'
 
 const { locale } = useI18n()

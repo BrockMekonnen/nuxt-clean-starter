@@ -22,10 +22,6 @@
         </button>
       </form>
 
-      <p v-if="errorMessage" class="mt-3 text-sm text-red-400">
-        {{ errorMessage }}
-      </p>
-
       <p v-if="isLoading && !items.length" class="mt-6 text-sm text-muted">
         {{ t('todoPage.loading') }}
       </p>
@@ -40,7 +36,7 @@
             type="checkbox"
             :checked="todo.completed"
             class="h-4 w-4 rounded border-border text-primary"
-            @change="toggleTodo(todo.id)"
+            @change="onToggle(todo.id)"
           />
           <span
             class="min-w-0 flex-1 text-sm"
@@ -51,7 +47,7 @@
           <button
             type="button"
             class="text-xs text-muted transition hover:text-red-400"
-            @click="removeTodo(todo.id)"
+            @click="onRemove(todo.id)"
           >
             {{ t('todoPage.remove') }}
           </button>
@@ -64,21 +60,24 @@
 </template>
 
 <script setup lang="ts">
+import { failureMessage } from '@core/error/failures'
+
 const { t } = useI18n()
-const {
-  items,
-  isLoading,
-  errorMessage,
-  fetchTodos,
-  addTodo,
-  toggleTodo,
-  removeTodo
-} = useTodo()
+const notify = useAppNotification()
+const { items, isLoading, fetchTodos, addTodo, toggleTodo, removeTodo } =
+  useTodo()
 
 const newTitle = ref('')
 
+function showTodoError(err: unknown) {
+  notify.showError({
+    title: t('notifications.todoErrorTitle'),
+    description: failureMessage(err)
+  })
+}
+
 onMounted(() => {
-  void fetchTodos()
+  void fetchTodos().catch(showTodoError)
 })
 
 async function onAdd() {
@@ -87,8 +86,24 @@ async function onAdd() {
   try {
     await addTodo(title)
     newTitle.value = ''
-  } catch {
-    // errorMessage set in store
+  } catch (err) {
+    showTodoError(err)
+  }
+}
+
+async function onToggle(id: string) {
+  try {
+    await toggleTodo(id)
+  } catch (err) {
+    showTodoError(err)
+  }
+}
+
+async function onRemove(id: string) {
+  try {
+    await removeTodo(id)
+  } catch (err) {
+    showTodoError(err)
   }
 }
 </script>

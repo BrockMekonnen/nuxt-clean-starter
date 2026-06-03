@@ -92,7 +92,7 @@ export default defineNuxtConfig({
       autoprefixer: {}
     }
   },
-  css: ['@core/theme/main.css'],
+  css: ['@core/theme/main.css', 'vue-sonner/style.css'],
   i18n: {
     defaultLocale: 'en',
     strategy: 'no_prefix',

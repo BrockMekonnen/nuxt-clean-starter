@@ -30,7 +30,19 @@
     "agreeTerms": "我同意条款和条件",
     "signingUp": "注册中…",
     "success": "账户已创建，请登录继续。",
-    "hasAccount": "已有账户？"
+    "hasAccount": "已有账户？",
+    "firstNameRequired": "名为必填项",
+    "lastNameRequired": "姓为必填项",
+    "phoneRequired": "手机号为必填项",
+    "validPhoneNumberErrorMessage": "请输入有效的手机号",
+    "termsRequired": "必须同意条款和条件"
+  },
+  "notifications": {
+    "errorTitle": "错误",
+    "successTitle": "成功",
+    "loginErrorTitle": "登录错误",
+    "registerErrorTitle": "注册错误",
+    "todoErrorTitle": "待办错误"
   },
   "layoutPage": {
     "home": "首页",

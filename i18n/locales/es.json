@@ -30,7 +30,19 @@
     "agreeTerms": "Acepto los términos y condiciones",
     "signingUp": "Registrando…",
     "success": "Cuenta creada. Inicia sesión para continuar.",
-    "hasAccount": "¿Ya tienes cuenta?"
+    "hasAccount": "¿Ya tienes cuenta?",
+    "firstNameRequired": "El nombre es obligatorio",
+    "lastNameRequired": "El apellido es obligatorio",
+    "phoneRequired": "El teléfono es obligatorio",
+    "validPhoneNumberErrorMessage": "Introduce un número de teléfono válido",
+    "termsRequired": "Debes aceptar los términos y condiciones"
+  },
+  "notifications": {
+    "errorTitle": "Error",
+    "successTitle": "Éxito",
+    "loginErrorTitle": "Error de inicio de sesión",
+    "registerErrorTitle": "Error de registro",
+    "todoErrorTitle": "Error de tareas"
   },
   "layoutPage": {
     "home": "Inicio",

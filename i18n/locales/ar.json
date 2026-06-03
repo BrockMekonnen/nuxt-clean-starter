@@ -30,7 +30,19 @@
     "agreeTerms": "أوافق على الشروط والأحكام",
     "signingUp": "جاري التسجيل…",
     "success": "تم إنشاء الحساب. سجّل الدخول للمتابعة.",
-    "hasAccount": "لديك حساب بالفعل؟"
+    "hasAccount": "لديك حساب بالفعل؟",
+    "firstNameRequired": "الاسم الأول مطلوب",
+    "lastNameRequired": "اسم العائلة مطلوب",
+    "phoneRequired": "رقم الهاتف مطلوب",
+    "validPhoneNumberErrorMessage": "أدخل رقم هاتف صالحًا",
+    "termsRequired": "يجب الموافقة على الشروط والأحكام"
+  },
+  "notifications": {
+    "errorTitle": "خطأ",
+    "successTitle": "نجاح",
+    "loginErrorTitle": "خطأ في تسجيل الدخول",
+    "registerErrorTitle": "خطأ في التسجيل",
+    "todoErrorTitle": "خطأ في المهام"
   },
   "layoutPage": {
     "home": "الرئيسية",

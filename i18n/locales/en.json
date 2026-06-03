@@ -30,7 +30,19 @@
     "agreeTerms": "I agree to the terms and conditions",
     "signingUp": "Signing up…",
     "success": "Account created. Sign in to continue.",
-    "hasAccount": "Already have an account?"
+    "hasAccount": "Already have an account?",
+    "firstNameRequired": "First name is required",
+    "lastNameRequired": "Last name is required",
+    "phoneRequired": "Phone number is required",
+    "validPhoneNumberErrorMessage": "Enter a valid phone number",
+    "termsRequired": "You must agree to the terms and conditions"
+  },
+  "notifications": {
+    "errorTitle": "Error",
+    "successTitle": "Success",
+    "loginErrorTitle": "Login error",
+    "registerErrorTitle": "Registration error",
+    "todoErrorTitle": "Todo error"
   },
   "layoutPage": {
     "home": "Home",
