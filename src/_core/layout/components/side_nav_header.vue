@@ -1,8 +1,8 @@
 <template>
   <div
     class="box-border flex h-14 shrink-0 items-center border-b border-border/10"
-    :class="collapsed ? 'justify-center' : 'gap-3 pe-3'"
-    :style="headerStyle"
+    :class="[collapsed ? 'w-20 max-w-20' : 'gap-3 pe-3']"
+    :style="{ paddingInlineStart: `${NAV_HEADER_MENU_INSET_PX}px` }"
   >
     <button
       type="button"
@@ -32,10 +32,7 @@
 
 <script setup lang="ts">
 import { AppIcons } from '../../icons/app_icons'
-import {
-  NAV_HEADER_MENU_INSET_PX,
-  NAV_RAIL_WIDTH_PX
-} from '../constants/nav_dimensions'
+import { NAV_HEADER_MENU_INSET_PX } from '../constants/nav_dimensions'
 import AppIcon from '@shared/components/app_icon.vue'
 
 const props = defineProps<{
@@ -45,16 +42,6 @@ const props = defineProps<{
 
 const { t } = useI18n()
 const navStore = useNavigationStore()
-
-const headerStyle = computed(() => {
-  if (props.collapsed) {
-    return {
-      width: `${NAV_RAIL_WIDTH_PX}px`,
-      maxWidth: `${NAV_RAIL_WIDTH_PX}px`
-    }
-  }
-  return { paddingInlineStart: `${NAV_HEADER_MENU_INSET_PX}px` }
-})
 
 function onMenuClick() {
   if (props.menuMode === 'toggle') {

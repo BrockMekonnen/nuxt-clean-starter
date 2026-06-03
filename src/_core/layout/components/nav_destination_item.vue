@@ -19,6 +19,7 @@
 </template>
 
 <script setup lang="ts">
+import { NAV_DRAWER_ITEM_PADDING_LEFT_PX } from '../constants/nav_dimensions'
 import AppIcon from '@shared/components/app_icon.vue'
 
 export type NavDestinationView = {
@@ -40,6 +41,8 @@ const props = defineProps<{
 const emit = defineEmits<{
   select: [destination: NavDestinationView]
 }>()
+
+const drawerPaddingLeft = `${NAV_DRAWER_ITEM_PADDING_LEFT_PX}px`
 
 const variantClass = computed(() => {
   switch (props.variant) {
@@ -69,7 +72,7 @@ const showLabel = computed(
   max-width: calc(280px - 22px);
   border-radius: 9999px;
   padding-right: 16px;
-  padding-left: 16px;
+  padding-left: v-bind(drawerPaddingLeft);
   gap: 12px;
 }
 
