@@ -16,10 +16,6 @@ import type {
 } from './models/api_types'
 import { mapUserDto } from './models/user_mapper'
 
-function bearerHeaders(token: string): { headers: Record<string, string> } {
-  return { headers: { Authorization: `Bearer ${token}` } }
-}
-
 export class AuthRepositoryImpl implements AuthRepository {
   constructor(
     private readonly http: HttpClient,
@@ -76,7 +72,7 @@ export class AuthRepositoryImpl implements AuthRepository {
     try {
       const response = await this.http.get<ApiDataResponse<UserDto>>(
         ApiPaths.usersMe,
-        bearerHeaders(token)
+        { authToken: token }
       )
       const dto = response.data
       if (!dto?.id) {

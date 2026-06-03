@@ -4,15 +4,16 @@ import { ensureConnected } from '@core/network/ensure_connected'
 
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
 
-function authHeaders(
+/** Attach Bearer token when present — mirrors Flutter `HttpClient` Dio interceptor. */
+function withAuthHeaders(
   token: string | null | undefined,
   headers?: Record<string, string>
 ): Record<string, string> | undefined {
-  if (!token) return headers
-  return {
-    ...headers,
-    Authorization: `Bearer ${token}`
+  const merged = headers ? { ...headers } : {}
+  if (token && merged.Authorization == null) {
+    merged.Authorization = `Bearer ${token}`
   }
+  return Object.keys(merged).length > 0 ? merged : undefined
 }
 
 export default defineNuxtPlugin(() => {
@@ -25,12 +26,10 @@ export default defineNuxtPlugin(() => {
     body?: unknown,
     options?: HttpRequestOptions
   ) {
-    // Read cookie on each request so a token set during login is visible immediately.
-    const token = useCookie<string | null>(Constants.authTokenCookie).value
-    const headers =
-      options?.headers?.Authorization != null
-        ? options.headers
-        : authHeaders(token, options?.headers)
+    const token =
+      options?.authToken ??
+      useCookie<string | null>(Constants.authTokenCookie).value
+    const headers = withAuthHeaders(token, options?.headers)
 
     ensureConnected()
 

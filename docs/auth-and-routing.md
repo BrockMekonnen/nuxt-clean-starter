@@ -64,3 +64,7 @@ In `import.meta.dev`, login and register forms pre-fill sample values for local 
 - A banner in `app.vue` warns when offline.
 
 Repositories do not check the network directly; all HTTP goes through `$http`.
+
+## Authorization header
+
+`plugins/http.ts` attaches `Authorization: Bearer <token>` on every request (reads the auth cookie, or `options.authToken` for a one-off override after login). Repositories should not build Bearer headers manually — same role as Flutter's Dio `onRequest` interceptor in `lib/_core/http_client.dart`.
