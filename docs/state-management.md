@@ -1,6 +1,6 @@
 # State management
 
-This starter uses a **layered** approach that scales from small apps to large modular codebases.
+This starter uses a **layered** approach that scales from small apps to large modular codebases. For folder layout and import rules, see [architecture.md](./architecture.md).
 
 ## Layers
 
@@ -39,7 +39,7 @@ Core cross-cutting state lives under `src/_core/stores/` (e.g. network).
 ## Auth example
 
 - Store: `modules/auth/stores/auth.store.ts`
-- Hydration: `plugins/auth.client.ts` restores session from `localStorage`
+- Hydration: `plugins/auth.ts` runs `callOnce('auth:bootstrap', …)` so the session restores on SSR and dedupes on the client. Token lives in a **cookie**; user profile may be cached in **localStorage** on the client for faster reloads (see `data/auth_persistence.ts`).
 - Facade: `useAuth()` for pages that prefer composables
 
 ## Route guards

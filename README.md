@@ -2,9 +2,11 @@
 
 Modular clean-architecture starter aligned with [flutter_clean_starter](https://github.com/BrockMekonnen/flutter_clean_starter) and [go-clean-starter](https://github.com/BrockMekonnen/go-clean-starter).
 
+- **Architecture** — [docs/architecture.md](./docs/architecture.md) (layers, dependency rules, adding modules)
 - **Domain / data** — `tsyringe` DI, use cases, repositories
 - **App state** — [Pinia](https://pinia.vuejs.org/) stores per module (see [docs/state-management.md](./docs/state-management.md))
 - **UI** — Nuxt pages, composable facades, Tailwind v4, [adaptive layout](./docs/adaptive-layout.md), [@nuxt/icon](https://nuxt.com/modules/icon) (MDI)
+- **Contributing** — [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) for framework basics.
 
@@ -95,9 +97,25 @@ npm run test        # Vitest (watch via test:watch)
   `node` environment; tests needing Nuxt auto-imports add a `// @vitest-environment nuxt`
   docblock and use `mockNuxtImport` (see `modules/auth/__tests__/`).
 
+## Template backlog
+
+Tracked improvements (architecture review, CI, docs): [docs/template-improvements.md](./docs/template-improvements.md).
+
 ## Adding a module
 
-1. Create `src/modules/<feature>/{domain,data,stores,features}` (mirror `modules/auth`).
-2. Define tokens in `<feature>_tokens.ts` and a `register<Feature>Module(di)` factory.
-3. Wire it into `src/_core/_init_modules.ts`.
-4. Register nav destinations in `<feature>_nav.ts` and add it to `init_navigation.ts`.
+Copy **`src/modules/auth/`**. Full conventions: [docs/architecture.md](./docs/architecture.md).
+
+| Step | Action |
+|------|--------|
+| 1 | Create `src/modules/<feature>/` with `domain/`, `data/`, `stores/`, `features/`, `__tests__/` |
+| 2 | **Domain** — repository interface, entities, `<Feature>Usecases` (throw `ValidationFailure` for invalid input) |
+| 3 | **Data** — `*RepositoryImpl`, DTOs/mappers; use `ApiError.from` for HTTP errors |
+| 4 | **Tokens** — `<feature>_tokens.ts` (tsyringe symbols) |
+| 5 | **DI** — `register<Feature>Module(di)` in `<feature>_module.ts`, then call it from `src/_core/_init_modules.ts` |
+| 6 | **Store** — `stores/<feature>.store.ts`; actions resolve use cases via `$di`, not `$http` |
+| 7 | **Composable** (optional) — `features/<screen>/composables/use<Feature>.ts` |
+| 8 | **UI** — Vue screens under `features/<screen>/page/` |
+| 9 | **Routes** — thin `src/pages/<route>.vue` (layout, `middleware`, `definePageMeta`) importing feature pages |
+| 10 | **Nav** (if in app shell) — `<feature>_nav.ts` + register in `src/_core/layout/init_navigation.ts` |
+| 11 | **i18n** — add keys to `i18n/locales/en.json` (and `ar`, `es`, `zh` for parity) |
+| 12 | **Tests** — `__tests__/` for use cases and repository; `// @vitest-environment nuxt` for store tests if needed |
