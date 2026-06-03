@@ -37,6 +37,7 @@
     "todos": "待办",
     "profile": "个人资料",
     "settings": "设置",
+    "offline": "当前处于离线状态，恢复网络后才能进行部分操作。",
     "logout": "退出登录",
     "more": "更多",
     "changeLanguage": "切换语言",

@@ -37,6 +37,7 @@
     "todos": "Tareas",
     "profile": "Perfil",
     "settings": "Ajustes",
+    "offline": "Estás sin conexión. Algunas acciones no funcionarán hasta que vuelva la red.",
     "logout": "Cerrar sesión",
     "more": "Más",
     "changeLanguage": "Cambiar idioma",

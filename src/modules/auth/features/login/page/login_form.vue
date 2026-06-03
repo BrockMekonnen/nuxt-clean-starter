@@ -14,6 +14,14 @@
         {{ t('loginPage.signIn') }}
       </h1>
 
+      <p
+        v-if="registeredBanner"
+        class="mt-4 w-full rounded-lg border border-primary/30 bg-primary/10 px-3 py-2 text-center text-sm text-primary"
+        role="status"
+      >
+        {{ registeredBanner }}
+      </p>
+
       <div class="mt-10 w-full space-y-4">
         <label class="block w-full">
           <span class="mb-1.5 block text-sm font-medium text-muted">
@@ -106,13 +114,19 @@
 <script setup lang="ts">
 import { AppIcons } from '@core/icons/app_icons'
 import { firstNavRoute } from '@core/layout/navigation_registry'
+import { safeRedirectPath } from '@core/routing/safe_redirect'
 import AppIcon from '@shared/components/app_icon.vue'
 
 const { t } = useI18n()
+const route = useRoute()
 const { isLoading, errorMessage, login } = useAuth()
 
-const email = ref('jane.doe@test.com')
-const password = ref('test@test')
+const email = ref(import.meta.dev ? 'jane.doe@test.com' : '')
+const password = ref(import.meta.dev ? 'test@test12' : '')
+
+const registeredBanner = computed(() =>
+  route.query.registered === '1' ? t('registerPage.success') : ''
+)
 const isPasswordVisible = ref(false)
 
 const fieldErrors = reactive({
@@ -151,7 +165,11 @@ async function onSubmit() {
 
   try {
     await login(email.value.trim(), password.value)
-    await navigateTo(firstNavRoute(), { replace: true })
+    const redirect = safeRedirectPath(
+      typeof route.query.redirect === 'string' ? route.query.redirect : null,
+      firstNavRoute()
+    )
+    await navigateTo(redirect, { replace: true })
   } catch {
     // errorMessage set in store
   }

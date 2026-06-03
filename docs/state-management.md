@@ -47,12 +47,10 @@ Core cross-cutting state lives under `src/_core/stores/` (e.g. network).
 Use middleware with the store:
 
 ```ts
-// middleware/auth.global.ts (example — enable when you add protected routes)
+// middleware/auth.ts — redirects to /login?redirect=<path> (see auth-and-routing.md)
 export default defineNuxtRouteMiddleware((to) => {
   if (!to.meta.requiresAuth) return
-  if (!useAuthStore().isAuthenticated) {
-    return navigateTo('/login')
-  }
+  // ...
 })
 ```
 

@@ -1,5 +1,6 @@
 <template>
   <NuxtRouteAnnouncer />
+  <NetworkOfflineBanner />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
@@ -7,6 +8,7 @@
 
 <script setup lang="ts">
 import { isTheme, THEME_COOKIE_NAME } from '@core/theme/constants'
+import NetworkOfflineBanner from '@shared/components/network_offline_banner.vue'
 
 const { locale } = useI18n()
 const themeCookie = useCookie<string | null>(THEME_COOKIE_NAME)

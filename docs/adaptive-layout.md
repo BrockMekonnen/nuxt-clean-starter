@@ -46,6 +46,8 @@ definePageMeta({
 </script>
 ```
 
+Unauthenticated users are sent to `/login?redirect=…` (see [auth-and-routing.md](./auth-and-routing.md)).
+
 ## Guest-only routes (landing, login)
 
 ```ts

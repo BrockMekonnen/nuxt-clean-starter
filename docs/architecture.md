@@ -198,12 +198,12 @@ See [state-management.md](./state-management.md).
 
 ## Route guards
 
-| Meta                 | Middleware | Behavior                                         |
-| -------------------- | ---------- | ------------------------------------------------ |
-| `requiresAuth: true` | `auth`     | Redirect to `/errors/401` if no cookie / session |
-| `guestOnly: true`    | `guest`    | Redirect authenticated users to first nav route  |
+| Meta                 | Middleware | Behavior                                                    |
+| -------------------- | ---------- | ----------------------------------------------------------- |
+| `requiresAuth: true` | `auth`     | Redirect to `/login?redirect=<path>` if no cookie / session |
+| `guestOnly: true`    | `guest`    | Redirect authenticated users to first nav route             |
 
-Typed in `src/types/page-meta.d.ts`. Middleware is **opt-in per page** (not global).
+Typed in `src/types/page-meta.d.ts`. Middleware is **opt-in per page** (not global). See [auth-and-routing.md](./auth-and-routing.md).
 
 ---
 

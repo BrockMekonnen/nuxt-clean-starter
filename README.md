@@ -8,6 +8,9 @@ Modular clean-architecture starter aligned with [flutter_clean_starter](https://
 - **App state** — [Pinia](https://pinia.vuejs.org/) stores per module (see [docs/state-management.md](./docs/state-management.md))
 - **UI** — Nuxt pages, composable facades, Tailwind v4, [adaptive layout](./docs/adaptive-layout.md), [@nuxt/icon](https://nuxt.com/modules/icon) (MDI)
 - **Contributing** — [CONTRIBUTING.md](./CONTRIBUTING.md)
+- **Auth & routing** — [docs/auth-and-routing.md](./docs/auth-and-routing.md)
+
+In **development**, login/register forms pre-fill demo credentials for the Go API (`jane.doe@test.com` / `test@test12`). Production builds use empty fields.
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) for framework basics.
 

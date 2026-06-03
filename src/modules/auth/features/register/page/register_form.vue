@@ -82,10 +82,6 @@
       </button>
 
       <p v-if="errorMessage" class="text-sm text-red-400">{{ errorMessage }}</p>
-      <p v-if="successMessage" class="text-sm text-primary">
-        {{ successMessage }}
-      </p>
-
       <p class="text-center text-sm text-muted">
         {{ t('registerPage.hasAccount') }}
         <NuxtLink
@@ -103,16 +99,14 @@
 const { t } = useI18n()
 const { isLoading, errorMessage, register } = useAuth()
 
-const firstName = ref('Jane')
-const lastName = ref('Doe')
-const phone = ref('+1 123 456 7890')
-const email = ref('')
-const password = ref('')
+const firstName = ref(import.meta.dev ? 'Jane' : '')
+const lastName = ref(import.meta.dev ? 'Doe' : '')
+const phone = ref(import.meta.dev ? '+1 123 456 7890' : '')
+const email = ref(import.meta.dev ? 'jane.doe@test.com' : '')
+const password = ref(import.meta.dev ? 'test@test12' : '')
 const agreedToTerms = ref(false)
-const successMessage = ref('')
 
 async function onSubmit() {
-  successMessage.value = ''
   try {
     await register({
       firstName: firstName.value.trim(),
@@ -122,8 +116,11 @@ async function onSubmit() {
       password: password.value,
       isTermAndConditionAgreed: agreedToTerms.value
     })
-    successMessage.value = t('registerPage.success')
-    await navigateTo('/login', { replace: true })
+    await navigateTo({
+      path: '/login',
+      query: { registered: '1' },
+      replace: true
+    })
   } catch {
     // store sets errorMessage
   }

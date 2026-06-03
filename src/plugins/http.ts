@@ -1,5 +1,6 @@
 import { Constants } from '@core/constants'
 import type { HttpClient, HttpRequestOptions } from '@core/http/http_client'
+import { ensureConnected } from '@core/network/ensure_connected'
 
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
 
@@ -30,6 +31,8 @@ export default defineNuxtPlugin(() => {
       options?.headers?.Authorization != null
         ? options.headers
         : authHeaders(token, options?.headers)
+
+    ensureConnected()
 
     return await $fetch<T>(path, {
       baseURL,

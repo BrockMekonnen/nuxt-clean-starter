@@ -8,5 +8,8 @@ export default defineNuxtRouteMiddleware((to) => {
 
   if (token.value || auth.isAuthenticated) return
 
-  return navigateTo('/errors/401')
+  return navigateTo({
+    path: '/login',
+    query: { redirect: to.fullPath }
+  })
 })

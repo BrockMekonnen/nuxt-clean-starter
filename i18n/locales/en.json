@@ -37,6 +37,7 @@
     "todos": "Todos",
     "profile": "Profile",
     "settings": "Settings",
+    "offline": "You are offline. Some actions will not work until connection is restored.",
     "logout": "Logout",
     "more": "More",
     "changeLanguage": "Change Language",

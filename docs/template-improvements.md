@@ -42,10 +42,10 @@ Track fixes and enhancements for **nuxt-clean-starter** as a large-project templ
 
 ## Product and DX polish
 
-- [ ] Remove or gate demo login credentials in `login_form.vue` (`import.meta.dev` or README note)
-- [ ] Document or implement post-register behavior (auto-login vs redirect to login)
-- [ ] Document protected-route UX: middleware sends to `/errors/401` vs redirect to `/login` (pick convention)
-- [ ] Wire `ConnectionFailure` / `network.store` into repositories or global error handling (offline-aware flows)
+- [x] Remove or gate demo login credentials in `login_form.vue` (`import.meta.dev` or README note)
+- [x] Document or implement post-register behavior (auto-login vs redirect to login)
+- [x] Document protected-route UX: middleware sends to `/errors/401` vs redirect to `/login` (pick convention)
+- [x] Wire `ConnectionFailure` / `network.store` into repositories or global error handling (offline-aware flows)
 - [x] Replace empty `modules/user/.gitKeep` with real scaffold or rely on second sample module (see P1)
 
 ---
