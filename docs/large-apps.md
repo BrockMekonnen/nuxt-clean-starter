@@ -99,21 +99,27 @@ await callOnce('blog:list', () => useBlogList())
 
 Current behavior (see `modules/auth/data/auth_persistence.ts`):
 
-- **Token** — cookie (`auth_token`), readable on server for SSR and BFF
+- **Token** — httpOnly cookie (`auth_token`) when using the default BFF flow
 - **User cache** — `localStorage` on client only (fast reload)
 - **Bootstrap** — `plugins/auth.ts` + `callOnce('auth:bootstrap', …)`
 
-### httpOnly session cookies (recommended for production)
+### httpOnly session cookies
+
+The starter now uses this pattern by default when
+`NUXT_PUBLIC_API_BASE=/api`.
 
 **Why:** JS cannot read the token → smaller XSS blast radius.
 
-**Approach:**
+**Current approach:**
 
-1. Login via **server route** (e.g. `server/api/auth/login.post.ts`) that calls upstream, then `setCookie(event, 'auth_token', token, { httpOnly: true, secure: true, sameSite: 'lax' })`
-2. Remove token from client-readable cookie in `auth_persistence.ts`; keep only non-sensitive UI prefs client-side
-3. BFF proxy forwards cookie on server-side `$fetch` automatically; client `HttpClient` may only need cookies on same-origin `/api`
+1. `server/api/users/login.post.ts` calls upstream login, then sets
+   `auth_token` with `{ httpOnly: true, secure: production, sameSite: 'lax' }`
+2. `server/api/users/me.get.ts` reads the cookie and forwards
+   `Authorization: Bearer <token>` upstream
+3. `server/api/auth/logout.post.ts` clears the cookie
 
-`plugins/http.ts` already attaches `Authorization` from cookie when present — switch to cookie-only server forwarding when httpOnly.
+If you bypass the BFF with an absolute `NUXT_PUBLIC_API_BASE`, the client falls
+back to the API's token response for local debugging.
 
 ### pinia-plugin-persistedstate
 

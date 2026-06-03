@@ -49,18 +49,22 @@ const languages = [
   { code: 'es', label: 'Español', flag: '🇪🇸' }
 ] as const
 
+const onClickOutside = (event: MouseEvent) => {
+  if (!root.value?.contains(event.target as Node)) {
+    isOpen.value = false
+  }
+}
+
 async function selectLanguage(code: (typeof languages)[number]['code']) {
   await setLocale(code)
   isOpen.value = false
 }
 
 onMounted(() => {
-  const onClickOutside = (event: MouseEvent) => {
-    if (!root.value?.contains(event.target as Node)) {
-      isOpen.value = false
-    }
-  }
   document.addEventListener('click', onClickOutside)
-  onBeforeUnmount(() => document.removeEventListener('click', onClickOutside))
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', onClickOutside)
 })
 </script>

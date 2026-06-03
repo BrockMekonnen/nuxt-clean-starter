@@ -6,7 +6,7 @@ Modular clean-architecture starter aligned with [flutter_clean_starter](https://
 - **Scaling** — [docs/large-apps.md](./docs/large-apps.md) (Nuxt layers, SSR data, auth/i18n/production options)
 - **Domain / data** — `tsyringe` DI, use cases, repositories
 - **App state** — [Pinia](https://pinia.vuejs.org/) stores per module (see [docs/state-management.md](./docs/state-management.md))
-- **UI** — Nuxt pages, composable facades, Tailwind v4, [adaptive layout](./docs/adaptive-layout.md), [@nuxt/icon](https://nuxt.com/modules/icon) (MDI)
+- **UI** — Nuxt pages, composable facades, Tailwind v4, [adaptive layout](./docs/adaptive-layout.md), [@nuxt/icon](https://nuxt.com/modules/icon) (MDI), [@nuxt/image](https://nuxt.com/modules/image), [@nuxt/fonts](https://nuxt.com/modules/fonts)
 - **Contributing** — [CONTRIBUTING.md](./CONTRIBUTING.md)
 - **Auth & routing** — [docs/auth-and-routing.md](./docs/auth-and-routing.md)
 
@@ -93,6 +93,7 @@ npm run typecheck   # tsc against the Nuxt-generated config
 npm run lint        # ESLint (flat config via @nuxt/eslint) + import-alias enforcement
 npm run format      # Prettier write (use format:check in CI)
 npm run test        # Vitest (watch via test:watch)
+npm run analyze     # Inspect production bundle size
 ```
 
 CI runs the same checks on push/PR (see `.github/workflows/ci.yml`), plus `depcruise` and Playwright e2e. After `npm install`, Husky runs lint-staged on commit.

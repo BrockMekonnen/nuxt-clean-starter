@@ -8,5 +8,6 @@ export const Constants = {
 export const ApiPaths = {
   usersLogin: '/users/login',
   usersRegister: '/users',
-  usersMe: '/users/me'
+  usersMe: '/users/me',
+  authLogout: '/auth/logout'
 } as const

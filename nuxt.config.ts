@@ -54,7 +54,14 @@ export default defineNuxtConfig({
     '~/plugins/network.client.ts',
     '~/plugins/auth.ts'
   ],
-  modules: ['@nuxt/eslint', '@nuxt/icon', '@pinia/nuxt', '@nuxtjs/i18n'],
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/fonts',
+    '@nuxt/icon',
+    '@nuxt/image',
+    '@pinia/nuxt',
+    '@nuxtjs/i18n'
+  ],
   eslint: {
     config: {
       stylistic: false

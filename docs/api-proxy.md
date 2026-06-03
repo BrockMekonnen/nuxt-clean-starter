@@ -9,9 +9,18 @@ The starter can route API traffic through the Nuxt server so the browser only ta
 | `NUXT_PUBLIC_API_BASE` | Public (client + server) | `/api`                      | Base URL used by `$http` / `HttpClient` |
 | `NUXT_API_UPSTREAM`    | Server only              | `http://127.0.0.1:9090/api` | Upstream API for the proxy              |
 
-Client requests go to `/api/users/login` → Nitro handler `src/server/api/[...].ts` → `http://127.0.0.1:9090/api/users/login`.
+Non-auth client requests go to `/api/*` → Nitro handler
+`src/server/api/[...].ts` → `NUXT_API_UPSTREAM/*`.
 
 The catch-all file must be named `[...].ts` (not `[...path].ts`) so paths with multiple segments match.
+
+Auth routes are handled before the catch-all proxy:
+
+- `src/server/api/users/login.post.ts` forwards login upstream, stores the token
+  in an httpOnly cookie, and returns the current user.
+- `src/server/api/users/me.get.ts` reads the auth cookie and forwards it as a
+  bearer token.
+- `src/server/api/auth/logout.post.ts` clears the auth cookie.
 
 ## Bypass the proxy (direct API)
 
@@ -35,4 +44,5 @@ Copy `.env.example`. Defaults use the BFF (`NUXT_PUBLIC_API_BASE=/api`) and `NUX
 
 - Set `NUXT_API_UPSTREAM` to your internal API URL (not exposed to the browser).
 - Keep `NUXT_PUBLIC_API_BASE=/api` so cookies and CORS stay on the app origin.
-- Add auth headers, rate limits, or request logging in the proxy handler as needed.
+- Add route allowlists, rate limits, request logging, or stricter auth checks in
+  the proxy handler as needed.

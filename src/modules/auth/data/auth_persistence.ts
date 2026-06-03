@@ -15,11 +15,11 @@ export interface AuthPersistence {
 }
 
 export function createAuthPersistence(): AuthPersistence {
-  // The token lives only in the cookie so it is the single source of truth on
-  // both server and client. The user object is cached in localStorage purely as
-  // a client-side fast path to avoid a `getMe` round-trip on reload.
+  // Production BFF login stores the token in an httpOnly cookie from Nitro
+  // routes. This readable cookie path remains for direct-API local debugging.
   const tokenCookie = useCookie<string | null>(Constants.authTokenCookie, {
     maxAge: 60 * 60 * 24 * 7,
+    secure: import.meta.env.PROD,
     sameSite: 'lax'
   })
 
@@ -62,7 +62,9 @@ export function createAuthPersistence(): AuthPersistence {
         this.clear()
         return
       }
-      this.persistToken(session.token)
+      if (session.token) {
+        this.persistToken(session.token)
+      }
       this.persistUser(session.user)
     },
 

@@ -65,6 +65,14 @@ In `import.meta.dev`, login and register forms pre-fill sample values for local 
 
 Repositories do not check the network directly; all HTTP goes through `$http`.
 
-## Authorization header
+## Auth cookie and Authorization header
 
-`plugins/http.ts` attaches `Authorization: Bearer <token>` on every request (reads the auth cookie, or `options.authToken` for a one-off override after login). Repositories should not build Bearer headers manually — same role as Flutter's Dio `onRequest` interceptor in `lib/_core/http_client.dart`.
+The default same-origin BFF flow keeps the bearer token in an httpOnly
+`auth_token` cookie set by `src/server/api/users/login.post.ts`. Client code
+does not read this token in production; `/api/users/me` forwards the cookie to
+the upstream API from the server.
+
+`plugins/http.ts` still supports `options.authToken` and a readable cookie as a
+direct-API fallback for local debugging. Repositories should not build Bearer
+headers manually — same role as Flutter's Dio `onRequest` interceptor in
+`lib/_core/http_client.dart`.

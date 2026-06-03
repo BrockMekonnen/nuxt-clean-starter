@@ -3,7 +3,8 @@ export type ApiDataResponse<T> = {
 }
 
 export type LoginResponseData = {
-  token: string
+  token?: string
+  user?: UserDto
 }
 
 /**

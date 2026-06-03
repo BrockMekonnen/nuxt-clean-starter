@@ -33,13 +33,14 @@ export class AuthRepositoryImpl implements AuthRepository {
       )
 
       const token = response.data?.token
-      if (!token) {
-        throw new ApiError('Authentication failed: no token returned.')
-      }
+      const user = response.data?.user
+        ? mapUserDto(response.data.user)
+        : await this.getMe(token ?? undefined)
 
-      this.persistence.persistToken(token)
-      const user = await this.getMe(token)
-      const session: AuthSession = { token, user }
+      if (token) {
+        this.persistence.persistToken(token)
+      }
+      const session: AuthSession = { token: token ?? null, user }
       this.persistence.persistSession(session)
       return session
     } catch (err) {
@@ -65,14 +66,11 @@ export class AuthRepositoryImpl implements AuthRepository {
 
   async getMe(accessToken?: string): Promise<AuthUser> {
     const token = accessToken ?? this.persistence.getToken()
-    if (!token) {
-      throw new ApiError('Not authenticated.')
-    }
 
     try {
       const response = await this.http.get<ApiDataResponse<UserDto>>(
         ApiPaths.usersMe,
-        { authToken: token }
+        token ? { authToken: token } : undefined
       )
       const dto = response.data
       if (!dto?.id) {
@@ -91,10 +89,8 @@ export class AuthRepositoryImpl implements AuthRepository {
     if (cached) return cached
 
     const token = this.persistence.getToken()
-    if (!token) return null
-
     try {
-      const user = await this.getMe()
+      const user = await this.getMe(token ?? undefined)
       const session: AuthSession = { token, user }
       this.persistence.persistSession(session)
       return session
@@ -105,6 +101,11 @@ export class AuthRepositoryImpl implements AuthRepository {
   }
 
   async logout(): Promise<void> {
+    try {
+      await this.http.post(ApiPaths.authLogout)
+    } catch {
+      // Clear local state even if the server session is already gone.
+    }
     this.persistence.clear()
   }
 }

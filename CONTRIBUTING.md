@@ -34,6 +34,9 @@ cp .env.example .env   # optional: point NUXT_PUBLIC_API_BASE at your API
 | `npm run format:check` | Prettier check (use in CI)                 |
 | `npm run test`         | Vitest (single run)                        |
 | `npm run test:watch`   | Vitest watch mode                          |
+| `npm run test:e2e`     | Playwright smoke tests                     |
+| `npm run depcruise`    | Layer dependency rules                     |
+| `npm run analyze`      | Production bundle visualizer               |
 
 Run before opening a PR:
 
