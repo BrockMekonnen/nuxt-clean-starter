@@ -2,7 +2,7 @@
 
 Modular **clean architecture** for Nuxt, aligned with [flutter_clean_starter](https://github.com/BrockMekonnen/flutter_clean_starter) and [go-clean-starter](https://github.com/BrockMekonnen/go-clean-starter).
 
-Related docs: [state management](./state-management.md), [adaptive layout](./adaptive-layout.md), [icons](./icons.md).
+Related docs: [state management](./state-management.md), [adaptive layout](./adaptive-layout.md), [icons](./icons.md), [large apps](./large-apps.md) (layers, SSR data, auth/i18n upgrades).
 
 ---
 

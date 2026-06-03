@@ -32,11 +32,11 @@ Track fixes and enhancements for **nuxt-clean-starter** as a large-project templ
 
 ## P3 — Large-app options (document or optional)
 
-- [ ] Document when to adopt [Nuxt layers](https://nuxt.com/docs/getting-started/layers) for multi-app / monorepo splits
-- [ ] Document SSR data fetching pattern: `useAsyncData` / `useFetch` + `callOnce` for public/server-driven pages
-- [ ] Document auth upgrades: httpOnly cookies, `pinia-plugin-persistedstate`, **@pinia/colada** for query-heavy features
-- [ ] Document i18n URL strategy (`prefix_except_default` or similar) when SEO per locale matters
-- [ ] Document optional production modules: `@nuxt/image`, `nuxt-security`, SEO/sitemap, observability (e.g. Sentry)
+- [x] Document when to adopt [Nuxt layers](https://nuxt.com/docs/getting-started/layers) for multi-app / monorepo splits
+- [x] Document SSR data fetching pattern: `useAsyncData` / `useFetch` + `callOnce` for public/server-driven pages
+- [x] Document auth upgrades: httpOnly cookies, `pinia-plugin-persistedstate`, **@pinia/colada** for query-heavy features
+- [x] Document i18n URL strategy (`prefix_except_default` or similar) when SEO per locale matters
+- [x] Document optional production modules: `@nuxt/image`, `nuxt-security`, SEO/sitemap, observability (e.g. Sentry)
 
 ---
 

@@ -33,3 +33,7 @@ registerNavDestinations({
 3. Use `mdi:icon-name` in templates.
 
 Other sets (e.g. `fa6-solid:github`) work without config changes; add collections to `nuxt.config.ts` `icon.serverBundle.collections` for local bundling.
+
+## Client navigation
+
+Nav icons are passed dynamically (`:name="destination.icon"`), so `@nuxt/icon` cannot detect them at build time via `scan` alone. `nuxt.config.ts` bundles every name in `AppIcons` via `icon.clientBundle.icons`. When you add a new shared icon, add it to `app_icons.ts` (it is picked up automatically).

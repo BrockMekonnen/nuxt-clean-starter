@@ -67,8 +67,10 @@ Set `definePageMeta({ requiresAuth: true })` on protected pages.
 
 ## Optional upgrades (large projects)
 
-- [`pinia-plugin-persistedstate`](https://prazdevs.github.io/pinia-plugin-persistedstate/) — declarative persistence per store
-- **SSR cookies** for auth tokens instead of `localStorage`
-- **@pinia/colada** — async queries/mutations on top of Pinia (data fetching at scale)
+See [large-apps.md](./large-apps.md) for when and how to add:
+
+- httpOnly auth cookies, `pinia-plugin-persistedstate`, **@pinia/colada**
+- SSR data fetching (`useAsyncData`, `callOnce`)
+- Nuxt layers, i18n URL strategies, production modules
 
 Do not replace `tsyringe` with Pinia for services; keep DI for constructor injection and unit tests.

@@ -2,7 +2,7 @@
 
 Thanks for improving **nuxt-clean-starter**. This repo is a template for large Nuxt apps using modular clean architecture.
 
-Read [docs/architecture.md](./docs/architecture.md) before adding features.
+Read [docs/architecture.md](./docs/architecture.md) before adding features. For scaling patterns (layers, SSR, production modules), see [docs/large-apps.md](./docs/large-apps.md).
 
 ---
 

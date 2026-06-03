@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { fileURLToPath } from 'node:url'
+import { AppIcons } from './src/_core/icons/app_icons'
 import { validateRuntimeEnv } from './src/_core/config/validate_runtime_env'
 import { THEME_INIT_SCRIPT } from './src/_core/theme/theme_init_script'
 
@@ -61,6 +62,12 @@ export default defineNuxtConfig({
   icon: {
     serverBundle: {
       collections: ['mdi']
+    },
+    // Nav uses dynamic `:name="destination.icon"` — scan cannot see those; bundle AppIcons
+    // so client navigations (e.g. login → app shell) render icons without a full reload.
+    clientBundle: {
+      icons: [...new Set(Object.values(AppIcons))],
+      scan: true
     }
   },
   pinia: {

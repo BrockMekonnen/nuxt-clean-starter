@@ -3,6 +3,7 @@
 Modular clean-architecture starter aligned with [flutter_clean_starter](https://github.com/BrockMekonnen/flutter_clean_starter) and [go-clean-starter](https://github.com/BrockMekonnen/go-clean-starter).
 
 - **Architecture** — [docs/architecture.md](./docs/architecture.md) (layers, dependency rules, adding modules)
+- **Scaling** — [docs/large-apps.md](./docs/large-apps.md) (Nuxt layers, SSR data, auth/i18n/production options)
 - **Domain / data** — `tsyringe` DI, use cases, repositories
 - **App state** — [Pinia](https://pinia.vuejs.org/) stores per module (see [docs/state-management.md](./docs/state-management.md))
 - **UI** — Nuxt pages, composable facades, Tailwind v4, [adaptive layout](./docs/adaptive-layout.md), [@nuxt/icon](https://nuxt.com/modules/icon) (MDI)
